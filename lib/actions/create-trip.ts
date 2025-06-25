@@ -1,3 +1,4 @@
+"use server"
 import { auth } from "@/auth"
 import { prisma } from "@/lib/prisma"
 import { redirect } from "next/navigation"
@@ -11,6 +12,7 @@ const createTrip = async (formData: FormData) => {
   const description = formData.get("description")?.toString()
   const startDateStr = formData.get("startDate")?.toString()
   const endDateStr = formData.get("endDate")?.toString()
+  const imageUrl = formData.get("imageUrl")?.toString()
 
   if (!title || !description || !startDateStr || !endDateStr) {
     throw new Error("All fields are required")
@@ -25,6 +27,7 @@ const createTrip = async (formData: FormData) => {
       description,
       startDate,
       endDate,
+      imageUrl,
       userId: session.user.id,
     },
   })
