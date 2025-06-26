@@ -7,6 +7,7 @@ import Link from "next/link"
 import { Button } from "./ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
 import Map from "@/components/Map"
+import SortableItinerary from "@/components/SortableItinerary"
 
 export type TripWithLocations = Trip & {
   locations: Location[]
@@ -118,6 +119,25 @@ const TripClientDetail = ({ trip }: TripDetailClientProps) => {
                 </p>
               </div>
             </div>
+          </TabsContent>
+
+          <TabsContent value="itinerary" className="space-y-6">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2xl font-semibold">Full Itinerary</h2>
+            </div>
+            {trip.locations.length === 0 ? (
+              <div className=" p-4">
+                <p>Add locations to see them on the itinerary</p>
+                <Link href={`/trips/${trip.id}/itinerary/new`}>
+                  <Button>
+                    <Plus className="h-5 w-5 mr-2" />
+                    Add Location
+                  </Button>
+                </Link>
+              </div>
+            ) : (
+              <SortableItinerary locations={trip.locations} tripId={trip.id} />
+            )}
           </TabsContent>
         </Tabs>
       </div>
