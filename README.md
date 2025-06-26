@@ -15,6 +15,7 @@ Travel Planner is a full-stack web application that allows users to plan, visual
 - **Drag & Drop:** @dnd-kit
 - **File Uploads:** uploadthing
 - **UI Components:** Radix UI, Lucide Icons
+- **Maps**: Google Maps API
 
 ---
 
