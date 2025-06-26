@@ -2,7 +2,7 @@
 import React, { useState } from "react"
 import { Trip, Location } from "@/app/generated/prisma"
 import Image from "next/image"
-import { Calendar, MapPin, Plus } from "lucide-react"
+import { ArrowBigLeftDash, Calendar, MapPin, Plus } from "lucide-react"
 import Link from "next/link"
 import { Button } from "./ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
@@ -139,7 +139,32 @@ const TripClientDetail = ({ trip }: TripDetailClientProps) => {
               <SortableItinerary locations={trip.locations} tripId={trip.id} />
             )}
           </TabsContent>
+
+          <TabsContent value="map" className="space-y-6">
+            <div className="h-72 rounded-lg overflow-hidden shadow">
+              <Map itineraries={trip.locations} />
+            </div>
+            {trip.locations.length === 0 && (
+              <div className=" p-4">
+                <p>Add locations to see them on the map</p>
+                <Link href={`/trips/${trip.id}/itinerary/new`}>
+                  <Button>
+                    <Plus className="h-5 w-5 mr-2" />
+                    Add Location
+                  </Button>
+                </Link>
+              </div>
+            )}
+          </TabsContent>
         </Tabs>
+      </div>
+      <div className="text-center">
+        <Link href={`/trips`}>
+          <Button>
+            <ArrowBigLeftDash className="h-10 w-10 mr-2" />
+            Back to Trips{" "}
+          </Button>
+        </Link>
       </div>
     </div>
   )
