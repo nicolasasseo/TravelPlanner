@@ -46,7 +46,7 @@ const page = async () => {
             {trips.length > 0
               ? `You have ${trips.length} trip${
                   trips.length === 1 ? "" : "s"
-                } planned, ${
+                } planned.${
                   upcomingTrips.length > 0
                     ? `${upcomingTrips.length} upcoming.`
                     : ""

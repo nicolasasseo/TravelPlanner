@@ -1,0 +1,666 @@
+[
+  {
+    "timestamp": "2025-10-19T22:02:30.540592",
+    "tool_name": "search_weather",
+    "query": "Find the weather for each location in: Arcachon, France, Bordeaux, France",
+    "success": true,
+    "result": {
+      "search_metadata": {
+        "id": "68f58a205c018f222ea8c982",
+        "status": "Success",
+        "json_endpoint": "https://serpapi.com/searches/354d05432a4fb99c/68f58a205c018f222ea8c982.json",
+        "pixel_position_endpoint": "https://serpapi.com/searches/354d05432a4fb99c/68f58a205c018f222ea8c982.json_with_pixel_position",
+        "created_at": "2025-10-20 01:02:24 UTC",
+        "processed_at": "2025-10-20 01:02:24 UTC",
+        "google_url": "https://www.google.com/search?q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&oq=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&sourceid=chrome&ie=UTF-8",
+        "raw_html_file": "https://serpapi.com/searches/354d05432a4fb99c/68f58a205c018f222ea8c982.html",
+        "total_time_taken": 6.32
+      },
+      "search_parameters": {
+        "engine": "google",
+        "q": "Find the weather for each location in: Arcachon, France, Bordeaux, France",
+        "google_domain": "google.com",
+        "device": "desktop"
+      },
+      "search_information": {
+        "query_displayed": "Find the weather for each location in: Arcachon, France, Bordeaux, France",
+        "total_results": 69400,
+        "time_taken_displayed": 0.31,
+        "organic_results_state": "Results for exact spelling"
+      },
+      "related_questions": [
+        {
+          "question": "What is the best time of year to visit Arcachon?",
+          "type": "featured_snippet",
+          "snippet": "The best time to visit Arcachon is between May and September. June and September offer warm weather without the peak season crowds, while July and August are ideal for beach holidays and festivals.",
+          "title": "A Visitor's Introduction to Arcachon - Choosewhere",
+          "link": "https://choosewhere.com/arcachon-visitor-guide#:~:text=The%20best%20time%20to%20visit,for%20beach%20holidays%20and%20festivals.",
+          "displayed_link": "https://choosewhere.com \u203a arcachon-visitor-guide",
+          "source_logo": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/5ec6b94e52b577978527131e01f5bdd057f96ec6c4383821e68ec1268ece1a1f.png",
+          "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2hhdCBpcyB0aGUgYmVzdCB0aW1lIG9mIHllYXIgdG8gdmlzaXQgQXJjYWNob24/IiwibGsiOiJHaTkzYUdGMElHbHpJSFJvWlNCaVpYTjBJSFJwYldVZ2IyWWdlV1ZoY2lCMGJ5QjJhWE5wZENCaGNtTmhZMmh2YmciLCJicyI6ImMtUEs0RElJejBnc1VjZ3NWaWpKU0ZWSVNpMHVVU2pKekUxVnlFOVRxRXhOTEZJb3lWY295eXpPTEZGd0xFcE9UTTdJejdPWE9CUnZaQ2lsWDA2Y3RrU29OaTVmTGsyd1RZbEZxUWc5WlprNU9ZbnBxY1VLZVNCTkNDdGVzQmpKU2tsalVRSTNMb1JMRGRuaHlmazVLU0RWdWZsNUpSa0ttWGxJWnYyc01WS1hVaTNIcHhodXFobVhlSGhHSlVnZFRMOUNXbUp1Zm1teHZVU1hnSkdFbEZnNVJEWVJWVmFBRVFBIiwiaWQiOiJmY19KWXIxYUtHc0tyeUd4YzhQdU12bmdRY18xIn0=",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2hhdCBpcyB0aGUgYmVzdCB0aW1lIG9mIHllYXIgdG8gdmlzaXQgQXJjYWNob24%2FIiwibGsiOiJHaTkzYUdGMElHbHpJSFJvWlNCaVpYTjBJSFJwYldVZ2IyWWdlV1ZoY2lCMGJ5QjJhWE5wZENCaGNtTmhZMmh2YmciLCJicyI6ImMtUEs0RElJejBnc1VjZ3NWaWpKU0ZWSVNpMHVVU2pKekUxVnlFOVRxRXhOTEZJb3lWY295eXpPTEZGd0xFcE9UTTdJejdPWE9CUnZaQ2lsWDA2Y3RrU29OaTVmTGsyd1RZbEZxUWc5WlprNU9ZbnBxY1VLZVNCTkNDdGVzQmpKU2tsalVRSTNMb1JMRGRuaHlmazVLU0RWdWZsNUpSa0ttWGxJWnYyc01WS1hVaTNIcHhodXFobVhlSGhHSlVnZFRMOUNXbUp1Zm1teHZVU1hnSkdFbEZnNVJEWVJWVmFBRVFBIiwiaWQiOiJmY19KWXIxYUtHc0tyeUd4YzhQdU12bmdRY18xIn0%3D"
+        },
+        {
+          "question": "What are the best villages near Arcachon?",
+          "type": "featured_snippet",
+          "snippet": "The Bay of Arcachon, a fascinating world of landscapes The 10 towns and villages that make it up - Arcachon, La Teste-de-Buch, Gujan-Mestras, Le Teich, Biganos, Audenge, Lanton, Andernos-les-Bains, Ar\u00e8s and L\u00e8ge-Cap Ferret - offer a diversity of experiences to discover less than an hour from Bordeaux.",
+          "title": "Discover the Arcachon Bay near Bordeaux",
+          "link": "https://www.bordeaux-tourism.co.uk/around-bordeaux/bordeaux-must-see/arcachon-bay#:~:text=The%20Bay%20of%20Arcachon%2C%20a%20fascinating%20world%20of%20landscapes&text=The%2010%20towns%20and%20villages,than%20an%20hour%20from%20Bordeaux.",
+          "displayed_link": "https://www.bordeaux-tourism.co.uk \u203a bordeaux-must-see",
+          "source_logo": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/5ec6b94e52b577978527131e01f5bdd01102d6857024c480284e7fd40d822d32.png",
+          "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2hhdCBhcmUgdGhlIGJlc3QgdmlsbGFnZXMgbmVhciBBcmNhY2hvbj8iLCJsayI6IkdodGlaWE4wSUhacGJHeGhaMlZ6SUc1bFlYSWdZWEpqWVdOb2IyNCIsImJzIjoiYy1QSzRESUl6MGdzVWNnc1ZpakpTRlZJU2kwdVVTakp6RTFWeUU5VHFFeE5MRklveVZjb3l5ek9MRkZ3TEVwT1RNN0l6N09YT0JSdlpDaWxYMDZjdGtTb05pNWZMazJ3VFlsRnFRZzlaWms1T1lucHFjVUtlU0JOQ0N0ZXNCakpTa2xqVVFJM0xvUkxEZG5oeWZrNUtTRFZ1Zmw1SlJrS21YbEladjJzTVZLWFVpM0hweGh1cWhtWGVIaEdKVWdkVEw5Q1dtSnVmbW14dlVTWGdKR0VsRmc1UkRZUlZWYUFFUUEiLCJpZCI6ImZjX0pZcjFhS0dzS3J5R3hjOFB1TXZuZ1FjXzEifQ==",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2hhdCBhcmUgdGhlIGJlc3QgdmlsbGFnZXMgbmVhciBBcmNhY2hvbj8iLCJsayI6IkdodGlaWE4wSUhacGJHeGhaMlZ6SUc1bFlYSWdZWEpqWVdOb2IyNCIsImJzIjoiYy1QSzRESUl6MGdzVWNnc1ZpakpTRlZJU2kwdVVTakp6RTFWeUU5VHFFeE5MRklveVZjb3l5ek9MRkZ3TEVwT1RNN0l6N09YT0JSdlpDaWxYMDZjdGtTb05pNWZMazJ3VFlsRnFRZzlaWms1T1lucHFjVUtlU0JOQ0N0ZXNCakpTa2xqVVFJM0xvUkxEZG5oeWZrNUtTRFZ1Zmw1SlJrS21YbEladjJzTVZLWFVpM0hweGh1cWhtWGVIaEdKVWdkVEw5Q1dtSnVmbW14dlVTWGdKR0VsRmc1UkRZUlZWYUFFUUEiLCJpZCI6ImZjX0pZcjFhS0dzS3J5R3hjOFB1TXZuZ1FjXzEifQ%3D%3D"
+        },
+        {
+          "question": "What is the coldest month in Arcachon?",
+          "type": "featured_snippet",
+          "snippet": "The coldest month of the year in Arcachon is January, with an average low of 39\u00b0F and high of 51\u00b0F.",
+          "title": "Arcachon Climate, Weather By Month, Average Temperature (France)",
+          "link": "https://weatherspark.com/y/40942/Average-Weather-in-Arcachon-France#:~:text=The%20coldest%20month%20of%20the,high%20of%2051%C2%B0F.",
+          "displayed_link": "https://weatherspark.com \u203a Average-Weather-in-Arcacho...",
+          "source_logo": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/5ec6b94e52b577978527131e01f5bdd05feae4568ca06f47cb797d5e6a7458bb.png",
+          "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2hhdCBpcyB0aGUgY29sZGVzdCBtb250aCBpbiBBcmNhY2hvbj8iLCJsayI6IkdpVjNhR0YwSUdseklIUm9aU0JqYjJ4a1pYTjBJRzF2Ym5Sb0lHbHVJR0Z5WTJGamFHOXUiLCJicyI6ImMtUEs0RElJejBnc1VjZ3NWaWpKU0ZWSVNpMHVVU2pKekUxVnlFOVRxRXhOTEZJb3lWY295eXpPTEZGd0xFcE9UTTdJejdPWE9CUnZaQ2lsWDA2Y3RrU29OaTVmTGsyd1RZbEZxUWc5WlprNU9ZbnBxY1VLZVNCTkNDdGVzQmpKU2tsalVRSTNMb1JMRGRuaHlmazVLU0RWdWZsNUpSa0ttWGxJWnYyc01WS1hVaTNIcHhodXFobVhlSGhHSlVnZFRMOUNXbUp1Zm1teHZVU1hnSkdFbEZnNVJEWVJWVmFBRVFBIiwiaWQiOiJmY19KWXIxYUtHc0tyeUd4YzhQdU12bmdRY18xIn0=",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2hhdCBpcyB0aGUgY29sZGVzdCBtb250aCBpbiBBcmNhY2hvbj8iLCJsayI6IkdpVjNhR0YwSUdseklIUm9aU0JqYjJ4a1pYTjBJRzF2Ym5Sb0lHbHVJR0Z5WTJGamFHOXUiLCJicyI6ImMtUEs0RElJejBnc1VjZ3NWaWpKU0ZWSVNpMHVVU2pKekUxVnlFOVRxRXhOTEZJb3lWY295eXpPTEZGd0xFcE9UTTdJejdPWE9CUnZaQ2lsWDA2Y3RrU29OaTVmTGsyd1RZbEZxUWc5WlprNU9ZbnBxY1VLZVNCTkNDdGVzQmpKU2tsalVRSTNMb1JMRGRuaHlmazVLU0RWdWZsNUpSa0ttWGxJWnYyc01WS1hVaTNIcHhodXFobVhlSGhHSlVnZFRMOUNXbUp1Zm1teHZVU1hnSkdFbEZnNVJEWVJWVmFBRVFBIiwiaWQiOiJmY19KWXIxYUtHc0tyeUd4YzhQdU12bmdRY18xIn0%3D"
+        },
+        {
+          "question": "Why is Arcachon famous?",
+          "type": "featured_snippet",
+          "snippet": "Traditionally the town of Arcachon was popular weekend retreat for those needing to escape the big city of Bordeaux. It has also been associated with a place of health and recovery where people were sent to 'take the air' and recuperate from various ailments at the turn of the 19th century.",
+          "title": "Arcachon - Bordeaux",
+          "date": "Jun 12, 2025",
+          "link": "https://www.seebordeaux.com/arcachon#:~:text=Traditionally%20the%20town%20of%20Arcachon,turn%20of%20the%2019th%20century.",
+          "displayed_link": "https://www.seebordeaux.com \u203a arcachon",
+          "source_logo": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/5ec6b94e52b577978527131e01f5bdd03ac8ebee6479d2c7e45e50161fecb9cd.png",
+          "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2h5IGlzIEFyY2FjaG9uIGZhbW91cz8iLCJsayI6IkdoWjNhSGtnYVhNZ1lYSmpZV05vYjI0Z1ptRnRiM1Z6IiwiYnMiOiJjLVBLNERJSXowZ3NVY2dzVmlqSlNGVklTaTB1VVNqSnpFMVZ5RTlUcUV4TkxGSW95VmNveXl6T0xGRndMRXBPVE03SXo3T1hPQlJ2WkNpbFgwNmN0a1NvTmk1ZkxrMndUWWxGcVFnOVpaazVPWW5wcWNVS2VTQk5DQ3Rlc0JqSlNrbGpVUUkzTG9STERkbmh5Zms1S1NEVnVmbDVKUmtLbVhsSVp2MnNNVktYVWkzSHB4aHVxaG1YZUhoR0pVZ2RUTDlDV21KdWZtbXh2VVNYZ0pHRWxGZzVSRFlSVlZhQUVRQSIsImlkIjoiZmNfSllyMWFLR3NLcnlHeGM4UHVNdm5nUWNfMSJ9",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2h5IGlzIEFyY2FjaG9uIGZhbW91cz8iLCJsayI6IkdoWjNhSGtnYVhNZ1lYSmpZV05vYjI0Z1ptRnRiM1Z6IiwiYnMiOiJjLVBLNERJSXowZ3NVY2dzVmlqSlNGVklTaTB1VVNqSnpFMVZ5RTlUcUV4TkxGSW95VmNveXl6T0xGRndMRXBPVE03SXo3T1hPQlJ2WkNpbFgwNmN0a1NvTmk1ZkxrMndUWWxGcVFnOVpaazVPWW5wcWNVS2VTQk5DQ3Rlc0JqSlNrbGpVUUkzTG9STERkbmh5Zms1S1NEVnVmbDVKUmtLbVhsSVp2MnNNVktYVWkzSHB4aHVxaG1YZUhoR0pVZ2RUTDlDV21KdWZtbXh2VVNYZ0pHRWxGZzVSRFlSVlZhQUVRQSIsImlkIjoiZmNfSllyMWFLR3NLcnlHeGM4UHVNdm5nUWNfMSJ9"
+        }
+      ],
+      "ai_overview": {
+        "page_token": "nLsLBHicxZTdcqJIFMev90HGGxNBZRJJFbXVzYfiNybGwRsLGmgU-QiggHfzLvtU-zTbIjIYYypTc7FHi6a7T5_z7-4f5-c_27Xn_PsXtOM4iJ4oKkmSBvZ9vDUbyHcpLco8RFn-NgqR_Xe259o1FHF0zVxzfTVsaoNuNAizboo6091o72EF1fIl3ErXInNDIqabiFpR5OF8awuk04gaptdoDnaGmS4kxpMbLbrJNiaU5hIH8Kcm3pzhASSTvA2A_Gvw_EpmlE-CQgAw8X0XnK92EgxyJ5HPJ_ClKz6n4p8VIAsrFqPJLdVONUUCAJTnJL8N-It87xbC4skXwvC175XlioTTzj-IXZqSlK9QAWIHjMrMvTxMfnSRL_5K6oApYBIRzbcfh4QDgF0wDWCi3Dz3uT8bh8KcxKcMTNigKT0kTZMKoyMp_AtL-937ueRkQfDIhvPZq32_f7Q7lmJtXF8AdzmDKCohjKoQZjSbbRI9E6d-Y9iAzQqBfL69ixNUyG_9yRFVTLzZKewYuDuXi32zJYO8UuaUQS_hgSiezwaCAqEP8caVFgNeLBSLVdBPUfN45VWPupWuQsAVT50EyMqJp37BVRGeP0XJpRIgSys_2xGAiDhBkccAk39OSjVlrpEv1-ZpBBmcAbOJwh4WIFCPeTARJBIFYv5hCSf1tnJ5M5uiXRwJdL6C_aVJn8wp4CPkdGzC-Ys17NITp4fcuT9oM9FMZZ5VXCDnu_pvFD70v0JZKYvXUIqfQknKIr5ZFotVRVkcnMqigi-hxGcoK2WxAqVYhdKpQHlVFt9BeVSUQ3lc8btQqhUojz63oCRlsQKlUy2LHjht7D2UXy2L0hfLYs6meWoua-Rug6_A7e4ny531vTMgAg9asN7py17_DUpOTMC13PhJM7Z3q7XxBFv9ODNqb5y09ox6bJv1xNRIE9YtP6ybGrLrWx9p8dr36mvvqQ5CRMZ8764uhZqHzLs69EPD1HbpeaTmbkOfozVGbsv6_fD7pC24w9feQku74u4-iZfqhO1kLmv3XWnfVhM6Q1CeTL3DmzMZm8HoxQ1YdWw4o-lSf8X72A2ZzjANdFa29B_NwaYvSMPx4qEX6stZfxgw7qv0I1XNWNo-0146Ofj8wYYos59bwSFS00VXYFu8xSu5rohTZotIeGvtF51OzdWMyOSaNTdEHLl-xgFj8qHVIqStzGjPPbSMB0ujGevRQozFkJ3hOAs4hvkPs1awWA",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_ai_overview&page_token=nLsLBHicxZTdcqJIFMev90HGGxNBZRJJFbXVzYfiNybGwRsLGmgU-QiggHfzLvtU-zTbIjIYYypTc7FHi6a7T5_z7-4f5-c_27Xn_PsXtOM4iJ4oKkmSBvZ9vDUbyHcpLco8RFn-NgqR_Xe259o1FHF0zVxzfTVsaoNuNAizboo6091o72EF1fIl3ErXInNDIqabiFpR5OF8awuk04gaptdoDnaGmS4kxpMbLbrJNiaU5hIH8Kcm3pzhASSTvA2A_Gvw_EpmlE-CQgAw8X0XnK92EgxyJ5HPJ_ClKz6n4p8VIAsrFqPJLdVONUUCAJTnJL8N-It87xbC4skXwvC175XlioTTzj-IXZqSlK9QAWIHjMrMvTxMfnSRL_5K6oApYBIRzbcfh4QDgF0wDWCi3Dz3uT8bh8KcxKcMTNigKT0kTZMKoyMp_AtL-937ueRkQfDIhvPZq32_f7Q7lmJtXF8AdzmDKCohjKoQZjSbbRI9E6d-Y9iAzQqBfL69ixNUyG_9yRFVTLzZKewYuDuXi32zJYO8UuaUQS_hgSiezwaCAqEP8caVFgNeLBSLVdBPUfN45VWPupWuQsAVT50EyMqJp37BVRGeP0XJpRIgSys_2xGAiDhBkccAk39OSjVlrpEv1-ZpBBmcAbOJwh4WIFCPeTARJBIFYv5hCSf1tnJ5M5uiXRwJdL6C_aVJn8wp4CPkdGzC-Ys17NITp4fcuT9oM9FMZZ5VXCDnu_pvFD70v0JZKYvXUIqfQknKIr5ZFotVRVkcnMqigi-hxGcoK2WxAqVYhdKpQHlVFt9BeVSUQ3lc8btQqhUojz63oCRlsQKlUy2LHjht7D2UXy2L0hfLYs6meWoua-Rug6_A7e4ny531vTMgAg9asN7py17_DUpOTMC13PhJM7Z3q7XxBFv9ODNqb5y09ox6bJv1xNRIE9YtP6ybGrLrWx9p8dr36mvvqQ5CRMZ8764uhZqHzLs69EPD1HbpeaTmbkOfozVGbsv6_fD7pC24w9feQku74u4-iZfqhO1kLmv3XWnfVhM6Q1CeTL3DmzMZm8HoxQ1YdWw4o-lSf8X72A2ZzjANdFa29B_NwaYvSMPx4qEX6stZfxgw7qv0I1XNWNo-0146Ofj8wYYos59bwSFS00VXYFu8xSu5rohTZotIeGvtF51OzdWMyOSaNTdEHLl-xgFj8qHVIqStzGjPPbSMB0ujGevRQozFkJ3hOAs4hvkPs1awWA"
+      },
+      "organic_results": [
+        {
+          "position": 1,
+          "title": "10 Day Weather-Arcachon, Gironde 33120, France",
+          "link": "https://weather.com/weather/tenday/l/27eed729bfdf1bb0c0b69681f2bd727f4d7e5e4bc40cd06da2ee7a640ca1b37e",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://weather.com/weather/tenday/l/27eed729bfdf1bb0c0b69681f2bd727f4d7e5e4bc40cd06da2ee7a640ca1b37e&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECBoQAQ",
+          "displayed_link": "https://weather.com \u203a weather \u203a tenday",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbf7c6aacffecb6e11158a6970a4951abb4.png",
+          "snippet": "10 Day Weather-Arcachon, Gironde 33120, France. As of 4:54 pm CEST. Tonight. --/52\u00b0. 7%. Night. 52\u00b0. 7%. ENE 11 mph. Clear skies. Low 52F.",
+          "snippet_highlighted_words": [
+            "10 Day Weather-Arcachon, Gironde 33120, France"
+          ],
+          "missing": [
+            "Find",
+            "Bordeaux,"
+          ],
+          "source": "The Weather Channel"
+        },
+        {
+          "position": 2,
+          "title": "7-day weather forecast: Our forecast for Bassin d'Arcachon",
+          "link": "https://bassin-arcachon.com/en/arcachon-basin-weather-forecast-for-the-week/",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://bassin-arcachon.com/en/arcachon-basin-weather-forecast-for-the-week/&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECBkQAQ",
+          "displayed_link": "https://bassin-arcachon.com \u203a arcachon-basin-weather-fo...",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbff182df006ddcdd404cfc91fc45388ae0.png",
+          "snippet": "During the summer months, the Bassin of Arcachon is bathed in gentle sea breezes and pleasant temperatures, with averages ranging from 20\u00b0C to 30\u00b0C.",
+          "snippet_highlighted_words": [
+            "Arcachon"
+          ],
+          "source": "bassin-arcachon.com"
+        },
+        {
+          "position": 3,
+          "title": "Arcachon, Gironde, France Weather Forecast",
+          "link": "https://www.accuweather.com/en/fr/arcachon/131918/weather-forecast/131918",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.accuweather.com/en/fr/arcachon/131918/weather-forecast/131918&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECD0QAQ",
+          "displayed_link": "https://www.accuweather.com \u203a arcachon \u203a weather-for...",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbfbc4cfe55fffa6ca704f836eb10f6d1ef.png",
+          "snippet": "Arcachon, Gironde, France Weather Forecast, with current conditions, wind, air quality, and what to expect for the next 3 days.",
+          "snippet_highlighted_words": [
+            "Arcachon, Gironde, France Weather"
+          ],
+          "missing": [
+            "Find"
+          ],
+          "must_include": {
+            "word": "Find",
+            "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=%22Find%22+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ5t4CegQIURAB"
+          },
+          "source": "AccuWeather"
+        },
+        {
+          "position": 4,
+          "title": "BBC Weather - Arcachon",
+          "link": "https://www.bbc.com/weather/3037253",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.bbc.com/weather/3037253&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECDYQAQ",
+          "displayed_link": "https://www.bbc.com \u203a weather",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbf3413d33e1206c9cbfd06dcc62f8e084e.png",
+          "snippet": "Hour by hour forecast ; 22 \u00b7 67% \u00b7 17 \u00b7 27 \u00b7 Thundery showers and a moderate breeze ; 23 \u00b7 84% \u00b7 16 \u00b7 26 \u00b7 Light rain showers and a moderate breeze ; 00 \u00b7 100% \u00b7 17 \u00b7 27 ...",
+          "snippet_highlighted_words": [
+            "Hour by hour forecast"
+          ],
+          "source": "BBC"
+        },
+        {
+          "position": 5,
+          "title": "Arcachon, France 10-Day Weather Forecast",
+          "link": "https://www.wunderground.com/forecast/fr/arcachon",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.wunderground.com/forecast/fr/arcachon&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECDcQAQ",
+          "displayed_link": "https://www.wunderground.com \u203a forecast \u203a arcachon",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbf130165f3c3c9100883132f1dc6bfbb80.png",
+          "snippet": "Arcachon Weather Forecasts. Weather Underground provides local & long-range weather forecasts, weatherreports, maps & tropical weather conditions for the ...",
+          "snippet_highlighted_words": [
+            "Arcachon Weather Forecasts"
+          ],
+          "missing": [
+            "Find",
+            "Bordeaux,"
+          ],
+          "source": "Weather Underground"
+        },
+        {
+          "position": 6,
+          "title": "Arcachon (France) weather",
+          "link": "https://weather.metoffice.gov.uk/forecast/ezznj9526",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://weather.metoffice.gov.uk/forecast/ezznj9526&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECDQQAQ",
+          "displayed_link": "https://weather.metoffice.gov.uk \u203a forecast \u203a ezznj9526",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbf353a10f163aceaff92f6154e9d39c883.png",
+          "snippet": "Arcachon 7 day weather forecast including weather warnings, temperature, rain, wind, visibility, humidity and UV.",
+          "snippet_highlighted_words": [
+            "Arcachon 7 day weather forecast"
+          ],
+          "source": "Met Office"
+        },
+        {
+          "position": 7,
+          "title": "10-Day Weather Forecast for Arcachon, Gironde, France",
+          "link": "https://weather.com/weather/tenday/l/278ef9c34e01c6add47bee72eea11c68b4e27502b1d3824ecb2d416e453e769d",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://weather.com/weather/tenday/l/278ef9c34e01c6add47bee72eea11c68b4e27502b1d3824ecb2d416e453e769d&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECDwQAQ",
+          "displayed_link": "https://weather.com \u203a weather \u203a tenday",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbfbaf527760a04336ba5477df145386152.png",
+          "snippet": "10 Day Weather- Arcachon, Gironde, France\u200b\u200b Partly cloudy this evening, then becoming cloudy after midnight. Low 57F. Winds ESE at 5 to 10 mph.",
+          "snippet_highlighted_words": [
+            "10 Day Weather- Arcachon, Gironde, France\u200b\u200b"
+          ],
+          "missing": [
+            "Find",
+            "Bordeaux,"
+          ],
+          "source": "The Weather Channel"
+        },
+        {
+          "position": 8,
+          "title": "Arcachon, Gironde, France 14 day weather forecast",
+          "link": "https://www.timeanddate.com/weather/@6614290/ext",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.timeanddate.com/weather/%406614290/ext&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECDsQAQ",
+          "displayed_link": "https://www.timeanddate.com \u203a Weather \u203a Arcachon",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbfbb98657fe8e7232fdb7ee0ecd99a6270.png",
+          "snippet": "2 Week Extended Forecast in Arcachon, Gironde, France ; Oct 20, 68 / 60 \u00b0F \u00b7 Passing showers. Overcast. ; Oct 21, 68 / 59 \u00b0F \u00b7 Thunderstorms. Overcast. ; Oct 22, 69 ...",
+          "snippet_highlighted_words": [
+            "2 Week Extended Forecast in Arcachon, Gironde, France"
+          ],
+          "missing": [
+            "Find"
+          ],
+          "must_include": {
+            "word": "Find",
+            "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=%22Find%22+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ5t4CegQIUxAB"
+          },
+          "source": "Time and Date"
+        },
+        {
+          "position": 9,
+          "title": "Weather Arcachon",
+          "link": "https://www.meteoblue.com/en/weather/week/arcachon_france_3037253?day=1",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.meteoblue.com/en/weather/week/arcachon_france_3037253%3Fday%3D1&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECDMQAQ",
+          "displayed_link": "https://www.meteoblue.com \u203a arcachon_france_3037253",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbf0fd93b385a654dcebbedf71b61fdf835.png",
+          "snippet": "Weather report for Arcachon. Overnight into Sunday it is mostly cloudy and even more are to come on Sunday morning also bringing rain.",
+          "snippet_highlighted_words": [
+            "Overnight into Sunday it is mostly cloudy"
+          ],
+          "source": "meteoblue"
+        },
+        {
+          "position": 10,
+          "title": "Arcachon 14 Day Weather Forecast - France",
+          "link": "https://www.weather25.com/europe/france/nouvelle-aquitaine/arcachon?page=14",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.weather25.com/europe/france/nouvelle-aquitaine/arcachon%3Fpage%3D14&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECDkQAQ",
+          "displayed_link": "https://www.weather25.com \u203a ... \u203a Arcachon",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbf4214c5095ee413f5b4293593cfb2eb3e.png",
+          "snippet": "The temperature will range between 73\u00b0 F and 53\u00b0 F. The hottest day in the next 2 weeks will be on October 18 and the coldest on October 26.",
+          "snippet_highlighted_words": [
+            "The temperature will range between 73\u00b0 F and 53\u00b0 F"
+          ],
+          "source": "Weather25.com"
+        }
+      ],
+      "related_searches": [
+        {
+          "block_position": 1,
+          "query": "Arcachon weather 14 days",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=Arcachon+weather+14+days&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAguEAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Arcachon+weather+14+days"
+        },
+        {
+          "block_position": 1,
+          "query": "Arcachon weather year round",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=Arcachon+weather+year+round&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAg6EAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Arcachon+weather+year+round"
+        },
+        {
+          "block_position": 1,
+          "query": "Weather Bordeaux france",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=Weather+Bordeaux+france&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAg4EAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Weather+Bordeaux+france"
+        },
+        {
+          "block_position": 1,
+          "query": "BBC weather Bordeaux",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=BBC+weather+Bordeaux&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAg1EAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=BBC+weather+Bordeaux"
+        },
+        {
+          "block_position": 1,
+          "query": "Bbc weather arcachon",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=Bbc+weather+arcachon&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAgyEAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Bbc+weather+arcachon"
+        },
+        {
+          "block_position": 1,
+          "query": "Met office Arcachon",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=Met+office+Arcachon&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAgxEAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Met+office+Arcachon"
+        },
+        {
+          "block_position": 1,
+          "query": "10 day weather forecast Bordeaux france",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=10+day+weather+forecast+Bordeaux+france&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAgwEAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=10+day+weather+forecast+Bordeaux+france"
+        },
+        {
+          "block_position": 1,
+          "query": "21 day weather forecast Bordeaux France",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=21+day+weather+forecast+Bordeaux+France&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAgvEAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=21+day+weather+forecast+Bordeaux+France"
+        }
+      ],
+      "pagination": {
+        "current": 1,
+        "next": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=10&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8NMDegQIChAW",
+        "other_pages": {
+          "2": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=10&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAE",
+          "3": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=20&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAG",
+          "4": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=30&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAI",
+          "5": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=40&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAK",
+          "6": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=50&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAM",
+          "7": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=60&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAO",
+          "8": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=70&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAQ",
+          "9": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=80&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAS",
+          "10": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=90&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAU"
+        }
+      },
+      "serpapi_pagination": {
+        "current": 1,
+        "next_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=10",
+        "next": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=10",
+        "other_pages": {
+          "2": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=10",
+          "3": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=20",
+          "4": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=30",
+          "5": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=40",
+          "6": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=50",
+          "7": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=60",
+          "8": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=70",
+          "9": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=80",
+          "10": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=90"
+        }
+      }
+    },
+    "result_keys": [
+      "search_metadata",
+      "search_parameters",
+      "search_information",
+      "related_questions",
+      "ai_overview",
+      "organic_results",
+      "related_searches",
+      "pagination",
+      "serpapi_pagination"
+    ]
+  },
+  {
+    "timestamp": "2025-10-19T22:02:31.086544",
+    "tool_name": "search_weather",
+    "query": "Find the weather for each location in: Arcachon, France, Bordeaux, France",
+    "success": true,
+    "result": {
+      "search_metadata": {
+        "id": "68f58a205c018f222ea8c982",
+        "status": "Success",
+        "json_endpoint": "https://serpapi.com/searches/354d05432a4fb99c/68f58a205c018f222ea8c982.json",
+        "pixel_position_endpoint": "https://serpapi.com/searches/354d05432a4fb99c/68f58a205c018f222ea8c982.json_with_pixel_position",
+        "created_at": "2025-10-20 01:02:24 UTC",
+        "processed_at": "2025-10-20 01:02:24 UTC",
+        "google_url": "https://www.google.com/search?q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&oq=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&sourceid=chrome&ie=UTF-8",
+        "raw_html_file": "https://serpapi.com/searches/354d05432a4fb99c/68f58a205c018f222ea8c982.html",
+        "total_time_taken": 6.32
+      },
+      "search_parameters": {
+        "engine": "google",
+        "q": "Find the weather for each location in: Arcachon, France, Bordeaux, France",
+        "google_domain": "google.com",
+        "device": "desktop"
+      },
+      "search_information": {
+        "query_displayed": "Find the weather for each location in: Arcachon, France, Bordeaux, France",
+        "total_results": 69400,
+        "time_taken_displayed": 0.31,
+        "organic_results_state": "Results for exact spelling"
+      },
+      "related_questions": [
+        {
+          "question": "What is the best time of year to visit Arcachon?",
+          "type": "featured_snippet",
+          "snippet": "The best time to visit Arcachon is between May and September. June and September offer warm weather without the peak season crowds, while July and August are ideal for beach holidays and festivals.",
+          "title": "A Visitor's Introduction to Arcachon - Choosewhere",
+          "link": "https://choosewhere.com/arcachon-visitor-guide#:~:text=The%20best%20time%20to%20visit,for%20beach%20holidays%20and%20festivals.",
+          "displayed_link": "https://choosewhere.com \u203a arcachon-visitor-guide",
+          "source_logo": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/5ec6b94e52b577978527131e01f5bdd057f96ec6c4383821e68ec1268ece1a1f.png",
+          "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2hhdCBpcyB0aGUgYmVzdCB0aW1lIG9mIHllYXIgdG8gdmlzaXQgQXJjYWNob24/IiwibGsiOiJHaTkzYUdGMElHbHpJSFJvWlNCaVpYTjBJSFJwYldVZ2IyWWdlV1ZoY2lCMGJ5QjJhWE5wZENCaGNtTmhZMmh2YmciLCJicyI6ImMtUEs0RElJejBnc1VjZ3NWaWpKU0ZWSVNpMHVVU2pKekUxVnlFOVRxRXhOTEZJb3lWY295eXpPTEZGd0xFcE9UTTdJejdPWE9CUnZaQ2lsWDA2Y3RrU29OaTVmTGsyd1RZbEZxUWc5WlprNU9ZbnBxY1VLZVNCTkNDdGVzQmpKU2tsalVRSTNMb1JMRGRuaHlmazVLU0RWdWZsNUpSa0ttWGxJWnYyc01WS1hVaTNIcHhodXFobVhlSGhHSlVnZFRMOUNXbUp1Zm1teHZVU1hnSkdFbEZnNVJEWVJWVmFBRVFBIiwiaWQiOiJmY19KWXIxYUtHc0tyeUd4YzhQdU12bmdRY18xIn0=",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2hhdCBpcyB0aGUgYmVzdCB0aW1lIG9mIHllYXIgdG8gdmlzaXQgQXJjYWNob24%2FIiwibGsiOiJHaTkzYUdGMElHbHpJSFJvWlNCaVpYTjBJSFJwYldVZ2IyWWdlV1ZoY2lCMGJ5QjJhWE5wZENCaGNtTmhZMmh2YmciLCJicyI6ImMtUEs0RElJejBnc1VjZ3NWaWpKU0ZWSVNpMHVVU2pKekUxVnlFOVRxRXhOTEZJb3lWY295eXpPTEZGd0xFcE9UTTdJejdPWE9CUnZaQ2lsWDA2Y3RrU29OaTVmTGsyd1RZbEZxUWc5WlprNU9ZbnBxY1VLZVNCTkNDdGVzQmpKU2tsalVRSTNMb1JMRGRuaHlmazVLU0RWdWZsNUpSa0ttWGxJWnYyc01WS1hVaTNIcHhodXFobVhlSGhHSlVnZFRMOUNXbUp1Zm1teHZVU1hnSkdFbEZnNVJEWVJWVmFBRVFBIiwiaWQiOiJmY19KWXIxYUtHc0tyeUd4YzhQdU12bmdRY18xIn0%3D"
+        },
+        {
+          "question": "What are the best villages near Arcachon?",
+          "type": "featured_snippet",
+          "snippet": "The Bay of Arcachon, a fascinating world of landscapes The 10 towns and villages that make it up - Arcachon, La Teste-de-Buch, Gujan-Mestras, Le Teich, Biganos, Audenge, Lanton, Andernos-les-Bains, Ar\u00e8s and L\u00e8ge-Cap Ferret - offer a diversity of experiences to discover less than an hour from Bordeaux.",
+          "title": "Discover the Arcachon Bay near Bordeaux",
+          "link": "https://www.bordeaux-tourism.co.uk/around-bordeaux/bordeaux-must-see/arcachon-bay#:~:text=The%20Bay%20of%20Arcachon%2C%20a%20fascinating%20world%20of%20landscapes&text=The%2010%20towns%20and%20villages,than%20an%20hour%20from%20Bordeaux.",
+          "displayed_link": "https://www.bordeaux-tourism.co.uk \u203a bordeaux-must-see",
+          "source_logo": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/5ec6b94e52b577978527131e01f5bdd01102d6857024c480284e7fd40d822d32.png",
+          "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2hhdCBhcmUgdGhlIGJlc3QgdmlsbGFnZXMgbmVhciBBcmNhY2hvbj8iLCJsayI6IkdodGlaWE4wSUhacGJHeGhaMlZ6SUc1bFlYSWdZWEpqWVdOb2IyNCIsImJzIjoiYy1QSzRESUl6MGdzVWNnc1ZpakpTRlZJU2kwdVVTakp6RTFWeUU5VHFFeE5MRklveVZjb3l5ek9MRkZ3TEVwT1RNN0l6N09YT0JSdlpDaWxYMDZjdGtTb05pNWZMazJ3VFlsRnFRZzlaWms1T1lucHFjVUtlU0JOQ0N0ZXNCakpTa2xqVVFJM0xvUkxEZG5oeWZrNUtTRFZ1Zmw1SlJrS21YbEladjJzTVZLWFVpM0hweGh1cWhtWGVIaEdKVWdkVEw5Q1dtSnVmbW14dlVTWGdKR0VsRmc1UkRZUlZWYUFFUUEiLCJpZCI6ImZjX0pZcjFhS0dzS3J5R3hjOFB1TXZuZ1FjXzEifQ==",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2hhdCBhcmUgdGhlIGJlc3QgdmlsbGFnZXMgbmVhciBBcmNhY2hvbj8iLCJsayI6IkdodGlaWE4wSUhacGJHeGhaMlZ6SUc1bFlYSWdZWEpqWVdOb2IyNCIsImJzIjoiYy1QSzRESUl6MGdzVWNnc1ZpakpTRlZJU2kwdVVTakp6RTFWeUU5VHFFeE5MRklveVZjb3l5ek9MRkZ3TEVwT1RNN0l6N09YT0JSdlpDaWxYMDZjdGtTb05pNWZMazJ3VFlsRnFRZzlaWms1T1lucHFjVUtlU0JOQ0N0ZXNCakpTa2xqVVFJM0xvUkxEZG5oeWZrNUtTRFZ1Zmw1SlJrS21YbEladjJzTVZLWFVpM0hweGh1cWhtWGVIaEdKVWdkVEw5Q1dtSnVmbW14dlVTWGdKR0VsRmc1UkRZUlZWYUFFUUEiLCJpZCI6ImZjX0pZcjFhS0dzS3J5R3hjOFB1TXZuZ1FjXzEifQ%3D%3D"
+        },
+        {
+          "question": "What is the coldest month in Arcachon?",
+          "type": "featured_snippet",
+          "snippet": "The coldest month of the year in Arcachon is January, with an average low of 39\u00b0F and high of 51\u00b0F.",
+          "title": "Arcachon Climate, Weather By Month, Average Temperature (France)",
+          "link": "https://weatherspark.com/y/40942/Average-Weather-in-Arcachon-France#:~:text=The%20coldest%20month%20of%20the,high%20of%2051%C2%B0F.",
+          "displayed_link": "https://weatherspark.com \u203a Average-Weather-in-Arcacho...",
+          "source_logo": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/5ec6b94e52b577978527131e01f5bdd05feae4568ca06f47cb797d5e6a7458bb.png",
+          "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2hhdCBpcyB0aGUgY29sZGVzdCBtb250aCBpbiBBcmNhY2hvbj8iLCJsayI6IkdpVjNhR0YwSUdseklIUm9aU0JqYjJ4a1pYTjBJRzF2Ym5Sb0lHbHVJR0Z5WTJGamFHOXUiLCJicyI6ImMtUEs0RElJejBnc1VjZ3NWaWpKU0ZWSVNpMHVVU2pKekUxVnlFOVRxRXhOTEZJb3lWY295eXpPTEZGd0xFcE9UTTdJejdPWE9CUnZaQ2lsWDA2Y3RrU29OaTVmTGsyd1RZbEZxUWc5WlprNU9ZbnBxY1VLZVNCTkNDdGVzQmpKU2tsalVRSTNMb1JMRGRuaHlmazVLU0RWdWZsNUpSa0ttWGxJWnYyc01WS1hVaTNIcHhodXFobVhlSGhHSlVnZFRMOUNXbUp1Zm1teHZVU1hnSkdFbEZnNVJEWVJWVmFBRVFBIiwiaWQiOiJmY19KWXIxYUtHc0tyeUd4YzhQdU12bmdRY18xIn0=",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2hhdCBpcyB0aGUgY29sZGVzdCBtb250aCBpbiBBcmNhY2hvbj8iLCJsayI6IkdpVjNhR0YwSUdseklIUm9aU0JqYjJ4a1pYTjBJRzF2Ym5Sb0lHbHVJR0Z5WTJGamFHOXUiLCJicyI6ImMtUEs0RElJejBnc1VjZ3NWaWpKU0ZWSVNpMHVVU2pKekUxVnlFOVRxRXhOTEZJb3lWY295eXpPTEZGd0xFcE9UTTdJejdPWE9CUnZaQ2lsWDA2Y3RrU29OaTVmTGsyd1RZbEZxUWc5WlprNU9ZbnBxY1VLZVNCTkNDdGVzQmpKU2tsalVRSTNMb1JMRGRuaHlmazVLU0RWdWZsNUpSa0ttWGxJWnYyc01WS1hVaTNIcHhodXFobVhlSGhHSlVnZFRMOUNXbUp1Zm1teHZVU1hnSkdFbEZnNVJEWVJWVmFBRVFBIiwiaWQiOiJmY19KWXIxYUtHc0tyeUd4YzhQdU12bmdRY18xIn0%3D"
+        },
+        {
+          "question": "Why is Arcachon famous?",
+          "type": "featured_snippet",
+          "snippet": "Traditionally the town of Arcachon was popular weekend retreat for those needing to escape the big city of Bordeaux. It has also been associated with a place of health and recovery where people were sent to 'take the air' and recuperate from various ailments at the turn of the 19th century.",
+          "title": "Arcachon - Bordeaux",
+          "date": "Jun 12, 2025",
+          "link": "https://www.seebordeaux.com/arcachon#:~:text=Traditionally%20the%20town%20of%20Arcachon,turn%20of%20the%2019th%20century.",
+          "displayed_link": "https://www.seebordeaux.com \u203a arcachon",
+          "source_logo": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/5ec6b94e52b577978527131e01f5bdd03ac8ebee6479d2c7e45e50161fecb9cd.png",
+          "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2h5IGlzIEFyY2FjaG9uIGZhbW91cz8iLCJsayI6IkdoWjNhSGtnYVhNZ1lYSmpZV05vYjI0Z1ptRnRiM1Z6IiwiYnMiOiJjLVBLNERJSXowZ3NVY2dzVmlqSlNGVklTaTB1VVNqSnpFMVZ5RTlUcUV4TkxGSW95VmNveXl6T0xGRndMRXBPVE03SXo3T1hPQlJ2WkNpbFgwNmN0a1NvTmk1ZkxrMndUWWxGcVFnOVpaazVPWW5wcWNVS2VTQk5DQ3Rlc0JqSlNrbGpVUUkzTG9STERkbmh5Zms1S1NEVnVmbDVKUmtLbVhsSVp2MnNNVktYVWkzSHB4aHVxaG1YZUhoR0pVZ2RUTDlDV21KdWZtbXh2VVNYZ0pHRWxGZzVSRFlSVlZhQUVRQSIsImlkIjoiZmNfSllyMWFLR3NLcnlHeGM4UHVNdm5nUWNfMSJ9",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSVpVZENlV3BPUzJNMVpqUTRMVTlJUWpZMU4zVmphVGxrVkdOdGN6bGhjRFIxTkZaNGNYaFNPRU5tWkROVFZIVm9RbUZFUlVOc1Z6aHROVmRmV2prelltOTViMDFPUzNsNVltdFZUVFpuZUZBeVdVeFJNMkZDVG14aVp4SVhTbGx5TVdGTFIzTkxjbmxIZUdNNFVIVk5kbTVuVVdNYUlrRkdUVUZIUjNCNVVHRkhaRkV3UWxKRlZtMTRRbmt6UjNGalRWOW9ObkpSUkhjIiwiZmN2IjoiMyIsImVpIjoiSllyMWFLR3NLcnlHeGM4UHVNdm5nUWMiLCJxYyI6ImMtTnlUY3ZNUzFFb3lVaFZLRTlOQkZKRkNtbjVSUXFwaWNrWkNqbjV5WWtsbWZsNUNwbDVDb2xGeVVBaElEdXRLREV2T1ZVaEtiOG9KVFd4dEFMS0YyQ29YV0FuYmc4QSIsInF1ZXN0aW9uIjoiV2h5IGlzIEFyY2FjaG9uIGZhbW91cz8iLCJsayI6IkdoWjNhSGtnYVhNZ1lYSmpZV05vYjI0Z1ptRnRiM1Z6IiwiYnMiOiJjLVBLNERJSXowZ3NVY2dzVmlqSlNGVklTaTB1VVNqSnpFMVZ5RTlUcUV4TkxGSW95VmNveXl6T0xGRndMRXBPVE03SXo3T1hPQlJ2WkNpbFgwNmN0a1NvTmk1ZkxrMndUWWxGcVFnOVpaazVPWW5wcWNVS2VTQk5DQ3Rlc0JqSlNrbGpVUUkzTG9STERkbmh5Zms1S1NEVnVmbDVKUmtLbVhsSVp2MnNNVktYVWkzSHB4aHVxaG1YZUhoR0pVZ2RUTDlDV21KdWZtbXh2VVNYZ0pHRWxGZzVSRFlSVlZhQUVRQSIsImlkIjoiZmNfSllyMWFLR3NLcnlHeGM4UHVNdm5nUWNfMSJ9"
+        }
+      ],
+      "ai_overview": {
+        "page_token": "nLsLBHicxZTdcqJIFMev90HGGxNBZRJJFbXVzYfiNybGwRsLGmgU-QiggHfzLvtU-zTbIjIYYypTc7FHi6a7T5_z7-4f5-c_27Xn_PsXtOM4iJ4oKkmSBvZ9vDUbyHcpLco8RFn-NgqR_Xe259o1FHF0zVxzfTVsaoNuNAizboo6091o72EF1fIl3ErXInNDIqabiFpR5OF8awuk04gaptdoDnaGmS4kxpMbLbrJNiaU5hIH8Kcm3pzhASSTvA2A_Gvw_EpmlE-CQgAw8X0XnK92EgxyJ5HPJ_ClKz6n4p8VIAsrFqPJLdVONUUCAJTnJL8N-It87xbC4skXwvC175XlioTTzj-IXZqSlK9QAWIHjMrMvTxMfnSRL_5K6oApYBIRzbcfh4QDgF0wDWCi3Dz3uT8bh8KcxKcMTNigKT0kTZMKoyMp_AtL-937ueRkQfDIhvPZq32_f7Q7lmJtXF8AdzmDKCohjKoQZjSbbRI9E6d-Y9iAzQqBfL69ixNUyG_9yRFVTLzZKewYuDuXi32zJYO8UuaUQS_hgSiezwaCAqEP8caVFgNeLBSLVdBPUfN45VWPupWuQsAVT50EyMqJp37BVRGeP0XJpRIgSys_2xGAiDhBkccAk39OSjVlrpEv1-ZpBBmcAbOJwh4WIFCPeTARJBIFYv5hCSf1tnJ5M5uiXRwJdL6C_aVJn8wp4CPkdGzC-Ys17NITp4fcuT9oM9FMZZ5VXCDnu_pvFD70v0JZKYvXUIqfQknKIr5ZFotVRVkcnMqigi-hxGcoK2WxAqVYhdKpQHlVFt9BeVSUQ3lc8btQqhUojz63oCRlsQKlUy2LHjht7D2UXy2L0hfLYs6meWoua-Rug6_A7e4ny531vTMgAg9asN7py17_DUpOTMC13PhJM7Z3q7XxBFv9ODNqb5y09ox6bJv1xNRIE9YtP6ybGrLrWx9p8dr36mvvqQ5CRMZ8764uhZqHzLs69EPD1HbpeaTmbkOfozVGbsv6_fD7pC24w9feQku74u4-iZfqhO1kLmv3XWnfVhM6Q1CeTL3DmzMZm8HoxQ1YdWw4o-lSf8X72A2ZzjANdFa29B_NwaYvSMPx4qEX6stZfxgw7qv0I1XNWNo-0146Ofj8wYYos59bwSFS00VXYFu8xSu5rohTZotIeGvtF51OzdWMyOSaNTdEHLl-xgFj8qHVIqStzGjPPbSMB0ujGevRQozFkJ3hOAs4hvkPs1awWA",
+        "serpapi_link": "https://serpapi.com/search.json?engine=google_ai_overview&page_token=nLsLBHicxZTdcqJIFMev90HGGxNBZRJJFbXVzYfiNybGwRsLGmgU-QiggHfzLvtU-zTbIjIYYypTc7FHi6a7T5_z7-4f5-c_27Xn_PsXtOM4iJ4oKkmSBvZ9vDUbyHcpLco8RFn-NgqR_Xe259o1FHF0zVxzfTVsaoNuNAizboo6091o72EF1fIl3ErXInNDIqabiFpR5OF8awuk04gaptdoDnaGmS4kxpMbLbrJNiaU5hIH8Kcm3pzhASSTvA2A_Gvw_EpmlE-CQgAw8X0XnK92EgxyJ5HPJ_ClKz6n4p8VIAsrFqPJLdVONUUCAJTnJL8N-It87xbC4skXwvC175XlioTTzj-IXZqSlK9QAWIHjMrMvTxMfnSRL_5K6oApYBIRzbcfh4QDgF0wDWCi3Dz3uT8bh8KcxKcMTNigKT0kTZMKoyMp_AtL-937ueRkQfDIhvPZq32_f7Q7lmJtXF8AdzmDKCohjKoQZjSbbRI9E6d-Y9iAzQqBfL69ixNUyG_9yRFVTLzZKewYuDuXi32zJYO8UuaUQS_hgSiezwaCAqEP8caVFgNeLBSLVdBPUfN45VWPupWuQsAVT50EyMqJp37BVRGeP0XJpRIgSys_2xGAiDhBkccAk39OSjVlrpEv1-ZpBBmcAbOJwh4WIFCPeTARJBIFYv5hCSf1tnJ5M5uiXRwJdL6C_aVJn8wp4CPkdGzC-Ys17NITp4fcuT9oM9FMZZ5VXCDnu_pvFD70v0JZKYvXUIqfQknKIr5ZFotVRVkcnMqigi-hxGcoK2WxAqVYhdKpQHlVFt9BeVSUQ3lc8btQqhUojz63oCRlsQKlUy2LHjht7D2UXy2L0hfLYs6meWoua-Rug6_A7e4ny531vTMgAg9asN7py17_DUpOTMC13PhJM7Z3q7XxBFv9ODNqb5y09ox6bJv1xNRIE9YtP6ybGrLrWx9p8dr36mvvqQ5CRMZ8764uhZqHzLs69EPD1HbpeaTmbkOfozVGbsv6_fD7pC24w9feQku74u4-iZfqhO1kLmv3XWnfVhM6Q1CeTL3DmzMZm8HoxQ1YdWw4o-lSf8X72A2ZzjANdFa29B_NwaYvSMPx4qEX6stZfxgw7qv0I1XNWNo-0146Ofj8wYYos59bwSFS00VXYFu8xSu5rohTZotIeGvtF51OzdWMyOSaNTdEHLl-xgFj8qHVIqStzGjPPbSMB0ujGevRQozFkJ3hOAs4hvkPs1awWA"
+      },
+      "organic_results": [
+        {
+          "position": 1,
+          "title": "10 Day Weather-Arcachon, Gironde 33120, France",
+          "link": "https://weather.com/weather/tenday/l/27eed729bfdf1bb0c0b69681f2bd727f4d7e5e4bc40cd06da2ee7a640ca1b37e",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://weather.com/weather/tenday/l/27eed729bfdf1bb0c0b69681f2bd727f4d7e5e4bc40cd06da2ee7a640ca1b37e&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECBoQAQ",
+          "displayed_link": "https://weather.com \u203a weather \u203a tenday",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbf7c6aacffecb6e11158a6970a4951abb4.png",
+          "snippet": "10 Day Weather-Arcachon, Gironde 33120, France. As of 4:54 pm CEST. Tonight. --/52\u00b0. 7%. Night. 52\u00b0. 7%. ENE 11 mph. Clear skies. Low 52F.",
+          "snippet_highlighted_words": [
+            "10 Day Weather-Arcachon, Gironde 33120, France"
+          ],
+          "missing": [
+            "Find",
+            "Bordeaux,"
+          ],
+          "source": "The Weather Channel"
+        },
+        {
+          "position": 2,
+          "title": "7-day weather forecast: Our forecast for Bassin d'Arcachon",
+          "link": "https://bassin-arcachon.com/en/arcachon-basin-weather-forecast-for-the-week/",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://bassin-arcachon.com/en/arcachon-basin-weather-forecast-for-the-week/&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECBkQAQ",
+          "displayed_link": "https://bassin-arcachon.com \u203a arcachon-basin-weather-fo...",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbff182df006ddcdd404cfc91fc45388ae0.png",
+          "snippet": "During the summer months, the Bassin of Arcachon is bathed in gentle sea breezes and pleasant temperatures, with averages ranging from 20\u00b0C to 30\u00b0C.",
+          "snippet_highlighted_words": [
+            "Arcachon"
+          ],
+          "source": "bassin-arcachon.com"
+        },
+        {
+          "position": 3,
+          "title": "Arcachon, Gironde, France Weather Forecast",
+          "link": "https://www.accuweather.com/en/fr/arcachon/131918/weather-forecast/131918",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.accuweather.com/en/fr/arcachon/131918/weather-forecast/131918&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECD0QAQ",
+          "displayed_link": "https://www.accuweather.com \u203a arcachon \u203a weather-for...",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbfbc4cfe55fffa6ca704f836eb10f6d1ef.png",
+          "snippet": "Arcachon, Gironde, France Weather Forecast, with current conditions, wind, air quality, and what to expect for the next 3 days.",
+          "snippet_highlighted_words": [
+            "Arcachon, Gironde, France Weather"
+          ],
+          "missing": [
+            "Find"
+          ],
+          "must_include": {
+            "word": "Find",
+            "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=%22Find%22+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ5t4CegQIURAB"
+          },
+          "source": "AccuWeather"
+        },
+        {
+          "position": 4,
+          "title": "BBC Weather - Arcachon",
+          "link": "https://www.bbc.com/weather/3037253",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.bbc.com/weather/3037253&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECDYQAQ",
+          "displayed_link": "https://www.bbc.com \u203a weather",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbf3413d33e1206c9cbfd06dcc62f8e084e.png",
+          "snippet": "Hour by hour forecast ; 22 \u00b7 67% \u00b7 17 \u00b7 27 \u00b7 Thundery showers and a moderate breeze ; 23 \u00b7 84% \u00b7 16 \u00b7 26 \u00b7 Light rain showers and a moderate breeze ; 00 \u00b7 100% \u00b7 17 \u00b7 27 ...",
+          "snippet_highlighted_words": [
+            "Hour by hour forecast"
+          ],
+          "source": "BBC"
+        },
+        {
+          "position": 5,
+          "title": "Arcachon, France 10-Day Weather Forecast",
+          "link": "https://www.wunderground.com/forecast/fr/arcachon",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.wunderground.com/forecast/fr/arcachon&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECDcQAQ",
+          "displayed_link": "https://www.wunderground.com \u203a forecast \u203a arcachon",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbf130165f3c3c9100883132f1dc6bfbb80.png",
+          "snippet": "Arcachon Weather Forecasts. Weather Underground provides local & long-range weather forecasts, weatherreports, maps & tropical weather conditions for the ...",
+          "snippet_highlighted_words": [
+            "Arcachon Weather Forecasts"
+          ],
+          "missing": [
+            "Find",
+            "Bordeaux,"
+          ],
+          "source": "Weather Underground"
+        },
+        {
+          "position": 6,
+          "title": "Arcachon (France) weather",
+          "link": "https://weather.metoffice.gov.uk/forecast/ezznj9526",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://weather.metoffice.gov.uk/forecast/ezznj9526&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECDQQAQ",
+          "displayed_link": "https://weather.metoffice.gov.uk \u203a forecast \u203a ezznj9526",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbf353a10f163aceaff92f6154e9d39c883.png",
+          "snippet": "Arcachon 7 day weather forecast including weather warnings, temperature, rain, wind, visibility, humidity and UV.",
+          "snippet_highlighted_words": [
+            "Arcachon 7 day weather forecast"
+          ],
+          "source": "Met Office"
+        },
+        {
+          "position": 7,
+          "title": "10-Day Weather Forecast for Arcachon, Gironde, France",
+          "link": "https://weather.com/weather/tenday/l/278ef9c34e01c6add47bee72eea11c68b4e27502b1d3824ecb2d416e453e769d",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://weather.com/weather/tenday/l/278ef9c34e01c6add47bee72eea11c68b4e27502b1d3824ecb2d416e453e769d&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECDwQAQ",
+          "displayed_link": "https://weather.com \u203a weather \u203a tenday",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbfbaf527760a04336ba5477df145386152.png",
+          "snippet": "10 Day Weather- Arcachon, Gironde, France\u200b\u200b Partly cloudy this evening, then becoming cloudy after midnight. Low 57F. Winds ESE at 5 to 10 mph.",
+          "snippet_highlighted_words": [
+            "10 Day Weather- Arcachon, Gironde, France\u200b\u200b"
+          ],
+          "missing": [
+            "Find",
+            "Bordeaux,"
+          ],
+          "source": "The Weather Channel"
+        },
+        {
+          "position": 8,
+          "title": "Arcachon, Gironde, France 14 day weather forecast",
+          "link": "https://www.timeanddate.com/weather/@6614290/ext",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.timeanddate.com/weather/%406614290/ext&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECDsQAQ",
+          "displayed_link": "https://www.timeanddate.com \u203a Weather \u203a Arcachon",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbfbb98657fe8e7232fdb7ee0ecd99a6270.png",
+          "snippet": "2 Week Extended Forecast in Arcachon, Gironde, France ; Oct 20, 68 / 60 \u00b0F \u00b7 Passing showers. Overcast. ; Oct 21, 68 / 59 \u00b0F \u00b7 Thunderstorms. Overcast. ; Oct 22, 69 ...",
+          "snippet_highlighted_words": [
+            "2 Week Extended Forecast in Arcachon, Gironde, France"
+          ],
+          "missing": [
+            "Find"
+          ],
+          "must_include": {
+            "word": "Find",
+            "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=%22Find%22+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ5t4CegQIUxAB"
+          },
+          "source": "Time and Date"
+        },
+        {
+          "position": 9,
+          "title": "Weather Arcachon",
+          "link": "https://www.meteoblue.com/en/weather/week/arcachon_france_3037253?day=1",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.meteoblue.com/en/weather/week/arcachon_france_3037253%3Fday%3D1&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECDMQAQ",
+          "displayed_link": "https://www.meteoblue.com \u203a arcachon_france_3037253",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbf0fd93b385a654dcebbedf71b61fdf835.png",
+          "snippet": "Weather report for Arcachon. Overnight into Sunday it is mostly cloudy and even more are to come on Sunday morning also bringing rain.",
+          "snippet_highlighted_words": [
+            "Overnight into Sunday it is mostly cloudy"
+          ],
+          "source": "meteoblue"
+        },
+        {
+          "position": 10,
+          "title": "Arcachon 14 Day Weather Forecast - France",
+          "link": "https://www.weather25.com/europe/france/nouvelle-aquitaine/arcachon?page=14",
+          "redirect_link": "https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.weather25.com/europe/france/nouvelle-aquitaine/arcachon%3Fpage%3D14&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQFnoECDkQAQ",
+          "displayed_link": "https://www.weather25.com \u203a ... \u203a Arcachon",
+          "favicon": "https://serpapi.com/searches/68f58a205c018f222ea8c982/images/cceb93e4668e07400feaffb5499a7dbf4214c5095ee413f5b4293593cfb2eb3e.png",
+          "snippet": "The temperature will range between 73\u00b0 F and 53\u00b0 F. The hottest day in the next 2 weeks will be on October 18 and the coldest on October 26.",
+          "snippet_highlighted_words": [
+            "The temperature will range between 73\u00b0 F and 53\u00b0 F"
+          ],
+          "source": "Weather25.com"
+        }
+      ],
+      "related_searches": [
+        {
+          "block_position": 1,
+          "query": "Arcachon weather 14 days",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=Arcachon+weather+14+days&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAguEAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Arcachon+weather+14+days"
+        },
+        {
+          "block_position": 1,
+          "query": "Arcachon weather year round",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=Arcachon+weather+year+round&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAg6EAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Arcachon+weather+year+round"
+        },
+        {
+          "block_position": 1,
+          "query": "Weather Bordeaux france",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=Weather+Bordeaux+france&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAg4EAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Weather+Bordeaux+france"
+        },
+        {
+          "block_position": 1,
+          "query": "BBC weather Bordeaux",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=BBC+weather+Bordeaux&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAg1EAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=BBC+weather+Bordeaux"
+        },
+        {
+          "block_position": 1,
+          "query": "Bbc weather arcachon",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=Bbc+weather+arcachon&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAgyEAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Bbc+weather+arcachon"
+        },
+        {
+          "block_position": 1,
+          "query": "Met office Arcachon",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=Met+office+Arcachon&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAgxEAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Met+office+Arcachon"
+        },
+        {
+          "block_position": 1,
+          "query": "10 day weather forecast Bordeaux france",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=10+day+weather+forecast+Bordeaux+france&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAgwEAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=10+day+weather+forecast+Bordeaux+france"
+        },
+        {
+          "block_position": 1,
+          "query": "21 day weather forecast Bordeaux France",
+          "link": "https://www.google.com/search?sca_esv=62d6fa04f7fc4f4e&q=21+day+weather+forecast+Bordeaux+France&sa=X&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ1QJ6BAgvEAE",
+          "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=21+day+weather+forecast+Bordeaux+France"
+        }
+      ],
+      "pagination": {
+        "current": 1,
+        "next": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=10&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8NMDegQIChAW",
+        "other_pages": {
+          "2": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=10&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAE",
+          "3": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=20&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAG",
+          "4": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=30&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAI",
+          "5": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=40&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAK",
+          "6": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=50&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAM",
+          "7": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=60&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAO",
+          "8": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=70&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAQ",
+          "9": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=80&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAS",
+          "10": "https://www.google.com/search?q=Find+the+weather+for+each+location+in:+Arcachon,+France,+Bordeaux,+France&sca_esv=62d6fa04f7fc4f4e&ei=JYr1aKGsKryGxc8PuMvngQc&start=90&sa=N&sstk=Af77f_c-b-oUm_URDRoSIu4TntEvqpyT0mq85oDDRFn4GyhQ0ixINTcZ_vky1TyDF-zUYJqHXiDdFKhSC0n6wiq0HJprY-hYtah8Mw&ved=2ahUKEwjh0taZyrGQAxU8Q_EDHbjlOXAQ8tMDegQIChAU"
+        }
+      },
+      "serpapi_pagination": {
+        "current": 1,
+        "next_link": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=10",
+        "next": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=10",
+        "other_pages": {
+          "2": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=10",
+          "3": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=20",
+          "4": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=30",
+          "5": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=40",
+          "6": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=50",
+          "7": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=60",
+          "8": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=70",
+          "9": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=80",
+          "10": "https://serpapi.com/search.json?device=desktop&engine=google&google_domain=google.com&q=Find+the+weather+for+each+location+in%3A+Arcachon%2C+France%2C+Bordeaux%2C+France&start=90"
+        }
+      }
+    },
+    "result_keys": [
+      "search_metadata",
+      "search_parameters",
+      "search_information",
+      "related_questions",
+      "ai_overview",
+      "organic_results",
+      "related_searches",
+      "pagination",
+      "serpapi_pagination"
+    ]
+  }
+]

@@ -8,6 +8,7 @@ import { Button } from "./ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
 import Map from "@/components/Map"
 import SortableItinerary from "@/components/SortableItinerary"
+import TripWeather from "@/components/TripWeather"
 
 export type TripWithLocations = Trip & {
   locations: Location[]
@@ -65,6 +66,9 @@ const TripClientDetail = ({ trip }: TripDetailClientProps) => {
             </TabsTrigger>
             <TabsTrigger value="map" className="text-lg">
               Map
+            </TabsTrigger>
+            <TabsTrigger value="weather" className="text-lg">
+              Weather info{" "}
             </TabsTrigger>
           </TabsList>
           <TabsContent value="overview" className="space-y-6">
@@ -155,6 +159,9 @@ const TripClientDetail = ({ trip }: TripDetailClientProps) => {
                 </Link>
               </div>
             )}
+          </TabsContent>
+          <TabsContent value="weather" className="space-y-6">
+            <TripWeather trip={trip} />
           </TabsContent>
         </Tabs>
       </div>

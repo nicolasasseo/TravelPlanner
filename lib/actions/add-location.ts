@@ -13,8 +13,26 @@ async function geocodeAddress(address: string) {
   )
 
   const data = await response.json()
-  const { lat, lng } = data.results[0].geometry.location
-  return { lat, lng }
+  const result = data.results[0]
+  const { lat, lng } = result.geometry.location
+
+  // Extract city/locality for better weather searches
+  const cityComponent = result.address_components.find(
+    (component: any) =>
+      component.types.includes("locality") ||
+      component.types.includes("administrative_area_level_1")
+  )
+  const countryComponent = result.address_components.find((component: any) =>
+    component.types.includes("country")
+  )
+
+  // Create a clean location name (e.g., "Paris, France" instead of "4 rue tourat")
+  const locationName =
+    cityComponent && countryComponent
+      ? `${cityComponent.long_name}, ${countryComponent.long_name}`
+      : result.formatted_address
+
+  return { lat, lng, locationName }
 }
 
 export async function addLocation(formData: FormData, tripId: string) {
@@ -28,7 +46,7 @@ export async function addLocation(formData: FormData, tripId: string) {
     throw new Error("Missing address")
   }
 
-  const { lat, lng } = await geocodeAddress(address)
+  const { lat, lng, locationName } = await geocodeAddress(address)
 
   const count = await prisma.location.count({
     where: { tripId },
@@ -36,7 +54,7 @@ export async function addLocation(formData: FormData, tripId: string) {
 
   await prisma.location.create({
     data: {
-      locationTitle: address,
+      locationTitle: locationName, // Use clean city name instead of street address
       lat,
       lng,
       tripId,

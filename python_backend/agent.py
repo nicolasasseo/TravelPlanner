@@ -30,79 +30,90 @@ class AgentState(TypedDict):
 
 @tool
 def search_places(query: str) -> str:
-    """Search the web for places to visit in the given query. Give a maximum of 5 results"""
+    """Search the web for places to visit in the given query. Give a maximum of 5 results."""
     print(
-        f" ========================= USING TOOL: Searching for places in {query} ========================= \n"
+        f"========================= USING TOOL: Searching for places in {query} =========================\n"
     )
-    params = {"q": query, "engine": "google", "api_key": os.getenv("SERPAPI_API_KEY")}
-    print(f"Params: {params} \n")
+    params = {
+        "q": query,
+        "engine": "google_maps",
+        "api_key": os.getenv("SERPAPI_API_KEY"),
+    }
     search = GoogleSearch(params)
-    print(f"Search: {search} \n")
     results = search.get_dict()
-    pprint(results)
+
+    tool_logger.log_tool_result(
+        tool_name="search_places", query=query, result=results, success=True
+    )
+    print("Full search results saved to tool_results.json")
+
     places = []
     for result in results.get("local_results", [])[:5]:
         places.append(
             {
-                "name": results.get("title", "Unknown place"),
-                "url": results.get("link", "Unknown link"),
-                "snippet": results.get("snippet", "Unknown snippet"),
+                # Use 'result.get' to access data from the current item in the loop
+                "name": result.get("title", "Unknown place"),
+                "rating": result.get("rating", "No rating"),
+                "address": result.get("address", "No address"),
+                "description": result.get("description", "No description"),
             }
         )
-    print(f"Found {len(places)} places for query: {query}")
-    print(f"Places: {places} \n")
     return json.dumps(places)
 
 
 @tool
-def search_weather(query: str) -> str:
-    """Search the web for the weather in the given query. If the user asks you for something else, say that you are trying to find the weather and ask them to rephrase their query."""
+def search_weather(query: list[str]) -> dict:
+    """Search the web for the weather in the given query."""
     print(
-        f" ========================= USING TOOL: Searching for weather in {query} ========================= \n"
+        f"========================= USING TOOL: Searching for weather in {query} =========================\n"
     )
-    params = {"q": query, "engine": "google", "api_key": os.getenv("SERPAPI_API_KEY")}
-    pprint(params)
+    weather_query = f"Find the weather for each location in: {', '.join(query)}"
+    params = {
+        "q": weather_query,
+        "engine": "google",
+        "api_key": os.getenv("SERPAPI_API_KEY"),
+    }
     search = GoogleSearch(params)
     results = search.get_dict()
-    pprint(results)
 
-    # Try to extract weather from knowledge_graph.web_results
-    weather_info = None
-    try:
-        web_results = results.get("knowledge_graph", {}).get("web_results", [])
-        for result in web_results:
-            if "forecast" in result:
-                weather_info = result["forecast"]
-                break
-    except Exception as e:
-        print(f"Error extracting weather from knowledge_graph: {e}")
+    tool_logger.log_tool_result(
+        tool_name="search_weather", query=weather_query, result=results, success=True
+    )
 
-    if weather_info:
-        print(f"Found weather info: {weather_info}")
-        # Extract current day's weather (first forecast)
-        current_weather = weather_info[0]
-        day = current_weather.get("day", "Today")
-        temperature = current_weather.get("temperature", "Unknown")
-        condition = current_weather.get("weather", "Unknown")
-        unit = current_weather.get("unit", "degrees")
+    answer_box = results.get("answer_box", {})
 
-        weather_summary = (
-            f"The weather in {query} for {day} is {temperature} {unit} and {condition}."
-        )
+    if answer_box and "weather" in answer_box:
+        temp_f = answer_box.get("temperature")
+        try:
+            temp_c = (int(temp_f) - 32) * 5 // 9
+        except (ValueError, TypeError):
+            temp_c = None
 
-        # Add forecast for next few days
-        if len(weather_info) > 1:
-            forecast_text = "\n\nForecast for the next few days:\n"
-            for day_forecast in weather_info[1:4]:  # Next 2 days
-                day_name = day_forecast.get("day", "Unknown day")
-                temp = day_forecast.get("temperature", "Unknown")
-                weather_cond = day_forecast.get("weather", "Unknown")
-                forecast_text += f"- {day_name}: {temp} {unit}, {weather_cond}\n"
-            weather_summary += forecast_text
+        current_weather = {
+            "location": answer_box.get("location", query),
+            "temperature_f": temp_f,
+            "temperature_c": temp_c,
+            "condition": answer_box.get("weather"),
+            "humidity": answer_box.get("humidity"),
+            "wind": answer_box.get("wind"),
+        }
 
-        return weather_summary
+        forecast_data = []
+        forecast_list = answer_box.get("forecast", [])
+        if forecast_list:
+            for day_forecast in forecast_list[:5]:  # Get up to 5 days
+                forecast_data.append(
+                    {
+                        "day": day_forecast.get("day"),
+                        "condition": day_forecast.get("weather"),
+                        "high_f": day_forecast.get("temperature", {}).get("high"),
+                        "low_f": day_forecast.get("temperature", {}).get("low"),
+                    }
+                )
 
-    return f"Sorry, I could not find the weather information for {query}."
+        return {"current": current_weather, "forecast": forecast_data}
+
+    return {"error": f"Could not find weather for {query}."}
 
 
 @tool
@@ -112,15 +123,21 @@ def search_trip_planning(destination: str, start_date: str, end_date: str) -> st
     print(
         f" ========================= USING TOOL: Searching for trip planning in {destination} from {start_date} to {end_date} ========================= \n"
     )
+    query = f"trip planning for {destination} from {start_date} to {end_date}"
     params = {
         "q": f"trip planning for {destination} from {start_date} to {end_date}",
         "engine": "google",
         "api_key": os.getenv("SERPAPI_API_KEY"),
     }
-    pprint(params)
     search = GoogleSearch(params)
     results = search.get_dict()
-    pprint(results)
+
+    # Log the complete results to JSON file for debugging
+    tool_logger.log_tool_result(
+        tool_name="search_trip_planning", query=query, result=results, success=True
+    )
+    print(f"📝 Full search results saved to tool_results.json")
+
     trip_planning_info = results.get("trip_planning", [])
     print(
         f"The trip planning information is {trip_planning_info} for the given destination, start date, and end date."
@@ -179,4 +196,6 @@ def generate_ai_response(user_input: str, user_id: str, trip_id: Optional[str] =
     return result["messages"][-1].content
 
 
-print(generate_ai_response("What is the weather in Tokyo?", "123", "456"))
+# For testing purposes only - uncomment to test the agent directly
+# if __name__ == "__main__":
+#     print(generate_ai_response("What is the weather in Tokyo?", "123", "456"))
