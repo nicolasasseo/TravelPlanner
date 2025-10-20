@@ -2,7 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, List
-from agent import generate_ai_response, search_weather
+from agent import generate_ai_response
+from search_weather import search_weather
 
 app = FastAPI()
 
@@ -89,9 +90,9 @@ async def get_trip_weather(request: TripWeatherRequest):
         f"================================================ Location names: {location_names} ================================================"
     )
 
-    # For now, get weather for the first location
-    # Later, you can enhance this to get weather for all locations
+    # Get weather for all locations in the trip
     if location_names:
-        weather_response = search_weather.invoke({"query": location_names})
+        weather_response = search_weather(location_names)
+        print(f"Weather response: {weather_response}")
         return weather_response
-    return WeatherResponse(error="No locations provided for weather query.")
+    return {"error": "No locations provided for weather query."}

@@ -27,11 +27,17 @@ interface ForecastDay {
   condition?: string
   high_f?: number
   low_f?: number
+  high_c?: number
+  low_c?: number
+}
+
+interface LocationWeather {
+  current?: CurrentWeather
+  forecast?: ForecastDay[]
 }
 
 interface WeatherResponse {
-  current?: CurrentWeather
-  forecast?: ForecastDay[]
+  locations?: LocationWeather[]
   error?: string
 }
 
@@ -63,6 +69,7 @@ interface TripWeatherProps {
 }
 
 const TripWeather = ({ trip }: TripWeatherProps) => {
+  console.log(trip)
   const [weather, setWeather] = useState<WeatherResponse | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -148,7 +155,7 @@ const TripWeather = ({ trip }: TripWeatherProps) => {
     )
   }
 
-  const { current, forecast, error: weatherError } = weather || {}
+  const { locations, error: weatherError } = weather || {}
 
   if (weatherError) {
     return (
@@ -158,61 +165,83 @@ const TripWeather = ({ trip }: TripWeatherProps) => {
     )
   }
 
+  if (!locations || locations.length === 0) {
+    return (
+      <div className="p-8 text-center text-gray-500">
+        <p className="text-lg mb-2">No weather data available</p>
+        <p className="text-sm">Unable to fetch weather for your locations</p>
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-8">
-      {/* Current Weather Section */}
-      {current && (
-        <div className="bg-slate-100 p-6 rounded-xl shadow-md">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">
-            {current.location}
-          </h3>
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-4">
-              {getWeatherIcon(current.condition)}
-              <div>
-                <p className="text-5xl font-bold text-gray-900">
-                  {current.temperature_c}°C
-                </p>
-                <p className="text-gray-600">{current.condition}</p>
-              </div>
-            </div>
-            <div className="text-right text-gray-700 space-y-2">
-              <div className="flex items-center justify-end">
-                <WiHumidity size={24} className="mr-2" /> Humidity:{" "}
-                {current.humidity}
-              </div>
-              <div className="flex items-center justify-end">
-                <WiStrongWind size={24} className="mr-2" /> Wind: {current.wind}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Weather for Each Location */}
+      {locations.map((locationWeather, locationIndex) => {
+        const { current, forecast } = locationWeather
+        if (!current) return null
 
-      {/* Forecast Section */}
-      {forecast && forecast.length > 0 && (
-        <div>
-          <h4 className="text-xl font-semibold mb-4 text-gray-700">
-            5-Day Forecast
-          </h4>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {forecast.map((day, index) => (
-              <div
-                key={index}
-                className="bg-white p-4 rounded-lg border text-center space-y-2"
-              >
-                <p className="font-bold text-gray-800">{day.day}</p>
-                {getWeatherIcon(day.condition)}
-                <p className="text-sm text-gray-600">{day.condition}</p>
-                <div className="flex justify-center items-baseline space-x-2">
-                  <span className="text-lg font-semibold">{day.high_f}°</span>
-                  <span className="text-gray-500">{day.low_f}°</span>
+        return (
+          <div key={locationIndex} className="space-y-6">
+            {/* Current Weather Section */}
+            <div className="bg-slate-100 p-6 rounded-xl shadow-md">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                {current.location}
+              </h3>
+              <div className="flex justify-between items-center">
+                <div className="flex items-center space-x-4">
+                  {getWeatherIcon(current.condition)}
+                  <div>
+                    <p className="text-5xl font-bold text-gray-900">
+                      {current.temperature_c}°C
+                    </p>
+                    <p className="text-gray-600">{current.condition}</p>
+                  </div>
+                </div>
+                <div className="text-right text-gray-700 space-y-2">
+                  <div className="flex items-center justify-end">
+                    <WiHumidity size={24} className="mr-2" /> Humidity:{" "}
+                    {current.humidity}
+                  </div>
+                  <div className="flex items-center justify-end">
+                    <WiStrongWind size={24} className="mr-2" /> Wind:{" "}
+                    {current.wind}
+                  </div>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Forecast Section */}
+            {forecast && forecast.length > 0 && (
+              <div>
+                <h4 className="text-xl font-semibold mb-4 text-gray-700">
+                  5-Day Forecast for {current.location}
+                </h4>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                  {forecast.map((day, index) => (
+                    <div
+                      key={index}
+                      className="bg-white p-4 rounded-lg border text-center space-y-2"
+                    >
+                      <p className="font-bold text-gray-800">{day.day}</p>
+                      {getWeatherIcon(day.condition)}
+                      <p className="text-sm text-gray-600">{day.condition}</p>
+                      <div className="flex justify-center items-baseline space-x-2">
+                        <span className="text-lg font-semibold">
+                          {day.high_c ? day.high_c : day.high_f}°C
+                        </span>
+                        <span className="text-gray-500">
+                          {day.low_c ? day.low_c : day.low_f}°C
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-        </div>
-      )}
+        )
+      })}
     </div>
   )
 }

@@ -62,61 +62,6 @@ def search_places(query: str) -> str:
 
 
 @tool
-def search_weather(query: list[str]) -> dict:
-    """Search the web for the weather in the given query."""
-    print(
-        f"========================= USING TOOL: Searching for weather in {query} =========================\n"
-    )
-    weather_query = f"Find the weather for each location in: {', '.join(query)}"
-    params = {
-        "q": weather_query,
-        "engine": "google",
-        "api_key": os.getenv("SERPAPI_API_KEY"),
-    }
-    search = GoogleSearch(params)
-    results = search.get_dict()
-
-    tool_logger.log_tool_result(
-        tool_name="search_weather", query=weather_query, result=results, success=True
-    )
-
-    answer_box = results.get("answer_box", {})
-
-    if answer_box and "weather" in answer_box:
-        temp_f = answer_box.get("temperature")
-        try:
-            temp_c = (int(temp_f) - 32) * 5 // 9
-        except (ValueError, TypeError):
-            temp_c = None
-
-        current_weather = {
-            "location": answer_box.get("location", query),
-            "temperature_f": temp_f,
-            "temperature_c": temp_c,
-            "condition": answer_box.get("weather"),
-            "humidity": answer_box.get("humidity"),
-            "wind": answer_box.get("wind"),
-        }
-
-        forecast_data = []
-        forecast_list = answer_box.get("forecast", [])
-        if forecast_list:
-            for day_forecast in forecast_list[:5]:  # Get up to 5 days
-                forecast_data.append(
-                    {
-                        "day": day_forecast.get("day"),
-                        "condition": day_forecast.get("weather"),
-                        "high_f": day_forecast.get("temperature", {}).get("high"),
-                        "low_f": day_forecast.get("temperature", {}).get("low"),
-                    }
-                )
-
-        return {"current": current_weather, "forecast": forecast_data}
-
-    return {"error": f"Could not find weather for {query}."}
-
-
-@tool
 def search_trip_planning(destination: str, start_date: str, end_date: str) -> str:
     """Search the web for trip planning information for the given destination, start date, and end date. If the user asks you for something else, say that you are trying to find trip planning information and ask them to rephrase their query."""
     # add debuggin
@@ -145,7 +90,7 @@ def search_trip_planning(destination: str, start_date: str, end_date: str) -> st
     return trip_planning_info
 
 
-tools = [search_places, search_weather, search_trip_planning]
+tools = [search_places, search_trip_planning]
 tool_node = ToolNode(tools)
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.6).bind_tools(tools)
 system_prompt = SystemMessage(
