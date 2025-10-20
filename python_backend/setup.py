@@ -2,8 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, List
-from agent import generate_ai_response
+from agent import generate_ai_response_stream_async
 from search_weather import search_weather
+from fastapi.responses import StreamingResponse
+import json
 
 app = FastAPI()
 
@@ -68,14 +70,23 @@ class ChatTripResponse(BaseModel):
     ai_response: str
 
 
-@app.post("/chat-trip", response_model=ChatTripResponse)
+@app.post("/chat-trip")
 async def chat_trip(request: ChatTripRequest):
-    # generate_ai_response is synchronous, so we don't await it
-    ai_response = generate_ai_response(
-        user_input=request.user_input, user_id=request.user_id, trip_id=request.trip_id
-    )
+    print(f"Received request: {request}")
 
-    return ChatTripResponse(ai_response=ai_response)
+    async def generate_stream():
+        try:
+            async for token in generate_ai_response_stream_async(
+                user_input=request.user_input,
+                user_id=request.user_id,
+                trip_id=request.trip_id,
+            ):
+                if token:  # Ensure we don't send empty data
+                    yield f"data: {json.dumps({'ai_response': token})}\n\n"
+        except Exception as e:
+            yield f"data: {json.dumps({'ai_response': f'Error: {e}'})}\n\n"
+
+    return StreamingResponse(generate_stream(), media_type="text/event-stream")
 
 
 @app.post("/trip-weather")

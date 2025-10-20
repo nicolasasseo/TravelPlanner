@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { prisma } from "@/lib/prisma"
+import TripChatbot from "@/components/TripChatbot"
 
 const page = async () => {
   const session = await auth()
@@ -55,6 +56,16 @@ const page = async () => {
           </p>
         </CardContent>
       </Card>
+      {/* Show the TripChatbot if there is at least one trip */}
+      <div>
+        <h2 className="text-xl font-semibold mt-4 mb-2">Need help planning?</h2>
+        {/* We give the first trip as an example, adjust as needed */}
+        <TripChatbot
+          tripId={sortedTrips[0].id}
+          userId={session.user?.id as string}
+        />
+      </div>
+
       <div className="">
         <h2 className="text-lg font-semibold mb-4">Your Recent Trips</h2>
         {trips.length === 0 ? (

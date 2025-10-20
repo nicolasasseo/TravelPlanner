@@ -116,6 +116,7 @@ def chat(state: AgentState) -> AgentState:
     messages = [system_prompt, *state["messages"]]
     print(f"Messages: {messages}")
     response = llm.invoke(messages)
+    print(f"Response: {response}")
     return {"messages": [response]}
 
 
@@ -130,17 +131,34 @@ graph.add_edge("tools", "chat")
 app = graph.compile()
 
 
-def generate_ai_response(user_input: str, user_id: str, trip_id: Optional[str] = None):
-    result = app.invoke(
-        {
-            "messages": [HumanMessage(content=user_input)],
-            "user_id": user_id,
-            "trip_id": trip_id,
-        }
-    )
-    return result["messages"][-1].content
+async def generate_ai_response_stream_async(
+    user_input: str, user_id: str, trip_id: Optional[str] = None
+):
+    print(f"Starting AI response generation for: {user_input}")
 
+    # Simple test response first
+    yield f"Hello! I received your message: '{user_input}'. Let me help you with that."
 
-# For testing purposes only - uncomment to test the agent directly
-# if __name__ == "__main__":
-#     print(generate_ai_response("What is the weather in Tokyo?", "123", "456"))
+    try:
+        async for chunk in app.astream(
+            {
+                "messages": [HumanMessage(content=user_input)],
+                "user_id": user_id,
+                "trip_id": trip_id,
+            }
+        ):
+            print(f"Received chunk: {chunk}")
+            if "chat" in chunk:
+                message = chunk["chat"]
+                if hasattr(message, "content") and message.content:
+                    print(f"Yielding content: {message.content}")
+                    yield message.content
+            elif "tools" in chunk:
+                print("Using tools...")
+                yield f"Using tools to find information..."
+            elif "tools_output" in chunk:
+                print("Tools output...")
+                yield f"Tools output..."
+    except Exception as e:
+        print(f"Error in AI processing: {e}")
+        yield f"Error in AI processing: {str(e)}"
