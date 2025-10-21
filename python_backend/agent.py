@@ -136,9 +136,6 @@ async def generate_ai_response_stream_async(
 ):
     print(f"Starting AI response generation for: {user_input}")
 
-    # Simple test response first
-    yield f"Hello! I received your message: '{user_input}'. Let me help you with that."
-
     try:
         async for chunk in app.astream(
             {
@@ -148,17 +145,23 @@ async def generate_ai_response_stream_async(
             }
         ):
             print(f"Received chunk: {chunk}")
+
+            # Handle chat node output
             if "chat" in chunk:
-                message = chunk["chat"]
-                if hasattr(message, "content") and message.content:
-                    print(f"Yielding content: {message.content}")
-                    yield message.content
+                messages_update = chunk["chat"]
+                # The chat node returns {"messages": [response]}
+                if "messages" in messages_update:
+                    for message in messages_update["messages"]:
+                        if hasattr(message, "content") and message.content:
+                            print(f"Yielding content: {message.content}")
+                            yield message.content
+
+            # Handle tools node output
             elif "tools" in chunk:
                 print("Using tools...")
-                yield f"Using tools to find information..."
-            elif "tools_output" in chunk:
-                print("Tools output...")
-                yield f"Tools output..."
+                # Optionally yield a status message
+                # yield "🔍 Searching for information..."
+
     except Exception as e:
         print(f"Error in AI processing: {e}")
         yield f"Error in AI processing: {str(e)}"
