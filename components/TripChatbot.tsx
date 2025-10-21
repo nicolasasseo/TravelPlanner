@@ -14,6 +14,7 @@ interface TripChatbotProps {
 export default function TripChatbot({ userId }: TripChatbotProps) {
   const [input, setInput] = useState("")
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const [isLoadingHistory, setIsLoadingHistory] = useState(true)
 
   const { messages, sendMessage, status, setMessages } = useChat({
     transport: new TextStreamChatTransport({
@@ -22,29 +23,87 @@ export default function TripChatbot({ userId }: TripChatbotProps) {
         userId: userId,
       },
     }),
+    onFinish: async (options) => {
+      // Save the assistant's response
+      const content = options.message.parts
+        .filter((p) => p.type === "text")
+        .map((p) => p.text)
+        .join("")
+
+      try {
+        await fetch("/api/chat/messages", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            role: "assistant",
+            content: content,
+          }),
+        })
+      } catch (error) {
+        console.error("Error saving assistant message:", error)
+      }
+    },
   })
+
+  const saveUserMessage = async (content: string) => {
+    try {
+      await fetch("/api/chat/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          role: "user",
+          content: content,
+        }),
+      })
+    } catch (error) {
+      console.error("Error saving user message:", error)
+    }
+  }
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }
 
-  // Add initial message when component mounts
+  // Load chat history when component mounts
   useEffect(() => {
-    if (messages.length === 0) {
-      setMessages([
-        {
-          id: "initial-assistant-message",
-          role: "assistant",
-          parts: [
-            {
-              type: "text",
-              text: "Hi! I'm Max, your travel assistant. I can help you with your trips, check weather, find places to visit, and plan your adventures. Ask me anything!",
-            },
-          ],
-        },
-      ])
+    const loadHistory = async () => {
+      try {
+        const response = await fetch("/api/chat/messages")
+        if (response.ok) {
+          const data = await response.json()
+          const historyMessages = data.messages.map((msg: any) => ({
+            id: msg.id,
+            role: msg.role,
+            parts: [{ type: "text", text: msg.content }],
+          }))
+
+          if (historyMessages.length > 0) {
+            setMessages(historyMessages)
+          } else {
+            // No history, show welcome message
+            setMessages([
+              {
+                id: "initial-assistant-message",
+                role: "assistant",
+                parts: [
+                  {
+                    type: "text",
+                    text: "Hi! I'm Max, your travel assistant. I can help you with your trips, check weather, find places to visit, and plan your adventures. Ask me anything!",
+                  },
+                ],
+              },
+            ])
+          }
+        }
+      } catch (error) {
+        console.error("Error loading chat history:", error)
+      } finally {
+        setIsLoadingHistory(false)
+      }
     }
-  }, [messages.length, setMessages])
+
+    loadHistory()
+  }, [setMessages])
 
   // Debug messages
   useEffect(() => {
@@ -58,57 +117,95 @@ export default function TripChatbot({ userId }: TripChatbotProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (input.trim() && status === "ready") {
-      sendMessage({ text: input })
+      const messageText = input
+      sendMessage({ text: messageText })
+      saveUserMessage(messageText)
       setInput("")
       // Scroll to bottom when user sends a message
       setTimeout(scrollToBottom, 100)
     }
   }
 
+  const clearHistory = async () => {
+    if (confirm("Are you sure you want to clear your chat history?")) {
+      try {
+        await fetch("/api/chat/messages", { method: "DELETE" })
+        setMessages([
+          {
+            id: "initial-assistant-message",
+            role: "assistant",
+            parts: [
+              {
+                type: "text",
+                text: "Hi! I'm Max, your travel assistant. I can help you with your trips, check weather, find places to visit, and plan your adventures. Ask me anything!",
+              },
+            ],
+          },
+        ])
+      } catch (error) {
+        console.error("Error clearing chat history:", error)
+      }
+    }
+  }
+
   return (
     <Card className="p-4 sm:p-6 max-w-2xl mx-auto shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-gray-800">
-        Travel Assistant
-      </h2>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-bold text-gray-800">Travel Assistant</h2>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={clearHistory}
+          disabled={isLoadingHistory || messages.length === 0}
+        >
+          Clear History
+        </Button>
+      </div>
 
       <div className="space-y-4 mb-4 h-80 overflow-y-auto pr-2">
-        {messages.map((m) => (
-          <div
-            key={m.id}
-            className={`flex ${
-              m.role === "user" ? "justify-end" : "justify-start"
-            }`}
-          >
+        {isLoadingHistory ? (
+          <div className="flex justify-center items-center h-full">
+            <p className="text-gray-500">Loading chat history...</p>
+          </div>
+        ) : (
+          messages.map((m) => (
             <div
-              className={`p-3 rounded-lg max-w-[85%] break-words shadow-sm ${
-                m.role === "user"
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-100 text-gray-900"
+              key={m.id}
+              className={`flex ${
+                m.role === "user" ? "justify-end" : "justify-start"
               }`}
             >
-              <p className="text-xs font-semibold mb-1 opacity-70">
-                {m.role === "user" ? "You" : "Max"}
-              </p>
-              {m.role === "user" ? (
-                <div className="text-sm">
-                  {m.parts.map((part, index) =>
-                    part.type === "text" ? (
-                      <span key={index}>{part.text}</span>
-                    ) : null
-                  )}
-                </div>
-              ) : (
-                <div className="text-sm prose prose-sm max-w-none prose-headings:mt-2 prose-headings:mb-1 prose-p:my-1 prose-li:my-0">
-                  {m.parts.map((part, index) =>
-                    part.type === "text" ? (
-                      <ReactMarkdown key={index}>{part.text}</ReactMarkdown>
-                    ) : null
-                  )}
-                </div>
-              )}
+              <div
+                className={`p-3 rounded-lg max-w-[85%] break-words shadow-sm ${
+                  m.role === "user"
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-100 text-gray-900"
+                }`}
+              >
+                <p className="text-xs font-semibold mb-1 opacity-70">
+                  {m.role === "user" ? "You" : "Max"}
+                </p>
+                {m.role === "user" ? (
+                  <div className="text-sm">
+                    {m.parts.map((part, index) =>
+                      part.type === "text" ? (
+                        <span key={index}>{part.text}</span>
+                      ) : null
+                    )}
+                  </div>
+                ) : (
+                  <div className="text-sm prose prose-sm max-w-none prose-headings:mt-2 prose-headings:mb-1 prose-p:my-1 prose-li:my-0">
+                    {m.parts.map((part, index) =>
+                      part.type === "text" ? (
+                        <ReactMarkdown key={index}>{part.text}</ReactMarkdown>
+                      ) : null
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
         {(status === "submitted" || status === "streaming") && (
           <div className="flex justify-start">
             <div className="bg-gray-100 p-3 rounded-lg">

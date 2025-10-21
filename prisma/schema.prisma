@@ -23,6 +23,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   trips         Trip[]
+  chatMessages  ChatMessage[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -93,4 +94,16 @@ model Location {
   tripId String
   order Int @default(0)
   createdAt DateTime @default(now())
+}
+
+model ChatMessage {
+  id String @id @default(cuid())
+  role String // "user" or "assistant"
+  content String @db.Text 
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now())
+  
+  @@index([userId, createdAt]) 
 }
