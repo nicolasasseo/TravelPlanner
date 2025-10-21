@@ -1,52 +1,17 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from typing import Optional, List
-from agent import generate_ai_response_stream_async
-from search_weather import search_weather
 from fastapi.responses import StreamingResponse
+from agent import generate_ai_response_stream_async
+from models import ChatRequest, WeatherRequest
+from services.trip_service import TripService
+from search_weather import search_weather
 import json
 
-app = FastAPI()
-
-
-class CurrentWeather(BaseModel):
-    location: str
-    temperature_f: Optional[float]
-    temperature_c: Optional[float]
-    condition: Optional[str]
-    humidity: Optional[str]
-    wind: Optional[str]
-
-
-class ForecastDay(BaseModel):
-    day: str
-    condition: Optional[str]
-    high_f: Optional[float]
-    low_f: Optional[float]
-
-
-class WeatherResponse(BaseModel):
-    current: Optional[CurrentWeather]
-    forecast: List[ForecastDay]
-    error: Optional[str] = None
-
-
-class LocationData(BaseModel):
-    name: str
-    lat: float
-    lng: float
-    order: int
-
-
-class TripWeatherRequest(BaseModel):
-    trip_id: str
-    user_id: str
-    locations: List[LocationData]
-    start_date: str
-    end_date: str
-    trip_title: str
-    trip_description: str
+app = FastAPI(
+    title="Travel Planner AI API",
+    description="AI-powered travel planning assistant API",
+    version="1.0.0",
+)
 
 
 # Add CORS middleware to allow requests from Next.js frontend
@@ -59,78 +24,86 @@ app.add_middleware(
 )
 
 
-class ChatTripRequest(BaseModel):
-    user_input: str
-    user_id: str
+@app.post("/chat-trip", summary="Chat with AI travel assistant")
+async def chat_trip(request: ChatRequest):
+    """
+    Stream chat responses from the AI travel assistant.
+    Fetches user's trip data and passes it as context to the AI.
+    """
+    print(f"\n{'='*80}")
+    print(f"🌐 FASTAPI CHAT ENDPOINT HIT")
+    print(f"User ID: {request.user_id}")
+    print(f"User input: '{request.user_input}'")
+    print(f"{'='*80}")
 
-
-class ChatTripResponse(BaseModel):
-    ai_response: str
-
-
-@app.post("/chat-trip")
-async def chat_trip(request: ChatTripRequest):
-    print(f"Received request: {request}")
-
-    # Fetch user's trips to pass in context
-    import requests
-
-    user_trips_data = None
-    try:
-        response = requests.get(
-            f"http://localhost:3000/api/ai/trips",
-            params={"userId": request.user_id},
-            timeout=5,
-        )
-        if response.status_code == 200:
-            data = response.json()
-            trips = data.get("trips", [])
-
-            if trips:
-                # Format trips for context
-                trips_text = f"You have {len(trips)} trip(s):\n\n"
-                for i, trip in enumerate(trips, 1):
-                    trips_text += f"{i}. {trip['title']}\n"
-                    trips_text += f"   Description: {trip['description']}\n"
-                    trips_text += f"   Dates: {trip['startDate'][:10]} to {trip['endDate'][:10]}\n"
-                    if trip.get("locations"):
-                        location_names = [loc["name"] for loc in trip["locations"]]
-                        trips_text += f"   Locations: {', '.join(location_names)}\n"
-                    trips_text += "\n"
-                user_trips_data = trips_text
-    except Exception as e:
-        print(f"Error fetching trips: {e}")
+    # Fetch user's trips using the service layer
+    print(f"FETCHING USER TRIPS...")
+    user_trips_data = TripService.fetch_user_trips(request.user_id)
+    print(f"USER TRIPS DATA: {bool(user_trips_data)}")
+    if user_trips_data:
+        print(f"RIPS PREVIEW: {user_trips_data[:200]}...")
 
     async def generate_stream():
         try:
+            print(f"STARTING STREAM GENERATION...")
             async for token in generate_ai_response_stream_async(
                 user_input=request.user_input,
                 user_id=request.user_id,
                 user_trips=user_trips_data,
             ):
                 if token:  # Ensure we don't send empty data
+                    print(f"STREAMING TOKEN: '{token}'")
                     yield f"data: {json.dumps({'ai_response': token})}\n\n"
         except Exception as e:
+            print(f"STREAM ERROR: {e}")
+            import traceback
+
+            traceback.print_exc()
             yield f"data: {json.dumps({'ai_response': f'Error: {e}'})}\n\n"
 
     return StreamingResponse(generate_stream(), media_type="text/event-stream")
 
 
-@app.post("/trip-weather")
-async def get_trip_weather(request: TripWeatherRequest):
+@app.post("/trip-weather", summary="Get weather for trip locations")
+async def get_trip_weather(request: dict):
     """
-    Get weather information for a trip with all its locations.
-    This gives the LLM full context: locations, dates, trip details.
+    Get weather information for all locations in a trip.
     """
-    # Extract location names for the weather query
-    location_names = [loc.name for loc in request.locations]
-    print(
-        f"================================================ Location names: {location_names} ================================================"
-    )
+    print(f"Received trip weather request: {request}")
 
-    # Get weather for all locations in the trip
-    if location_names:
-        weather_response = search_weather(location_names)
-        print(f"Weather response: {weather_response}")
-        return weather_response
-    return {"error": "No locations provided for weather query."}
+    try:
+        # Extract location names from the request
+        locations = request.get("locations", [])
+        print(f"Locations received: {locations}")
+
+        if not locations:
+            print("No locations provided in request")
+            return {"error": "No locations provided"}
+
+        # Convert to list of location names
+        location_names = [loc.get("name", "") for loc in locations if loc.get("name")]
+        print(f"Location names extracted: {location_names}")
+
+        if not location_names:
+            print("No valid location names found")
+            return {"error": "No valid location names found"}
+
+        # Get weather data
+        print(f"Calling search_weather with: {location_names}")
+        weather_data = search_weather(location_names)
+        print(f"Weather data received: {weather_data}")
+
+        return weather_data
+
+    except Exception as e:
+        print(f"Error in trip-weather endpoint: {e}")
+        import traceback
+
+        traceback.print_exc()
+        return {"error": f"Failed to fetch weather: {str(e)}"}
+
+
+@app.get("/health", summary="Health check")
+async def health_check():
+    """Health check endpoint"""
+    return {"status": "healthy", "service": "Travel Planner AI API"}

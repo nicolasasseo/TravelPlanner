@@ -73,6 +73,7 @@ model Trip {
   id String @id @default(cuid())
   title String
   description String
+  summary String? @db.Text
   imageUrl String?
   startDate DateTime
   endDate DateTime

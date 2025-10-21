@@ -19,6 +19,12 @@ import json
 from pprint import pprint
 from ToolLogger import tool_logger
 from search_weather import search_weather as search_weather_function
+from trip_tools import (
+    create_trip,
+    add_destination_to_trip,
+    get_trip_details,
+    get_travel_recommendations,
+)
 
 load_dotenv()
 
@@ -31,7 +37,18 @@ class AgentState(TypedDict):
 
 @tool
 def search_places(query: str) -> str:
-    """Search the web for places to visit in the given query. Give a maximum of 5 results."""
+    """Search for places, attractions, restaurants, and things to do in a location.
+
+    Use this when the user asks for recommendations or places to visit.
+    If they specify a location, use it directly. Don't ask again.
+
+    Examples:
+    - User: "What can I do in Paris?" → Call search_places("things to do in Paris")
+    - User: "Best restaurants in Tokyo" → Call search_places("best restaurants in Tokyo")
+    - User: "Find places in London" → Call search_places("places to visit in London")
+
+    Returns: Up to 5 top results with ratings and descriptions.
+    """
     print(
         f"========================= USING TOOL: Searching for places in {query} =========================\n"
     )
@@ -94,10 +111,17 @@ def search_trip_planning(destination: str, start_date: str, end_date: str) -> st
 @tool
 def search_weather(locations: str) -> str:
     """Get current weather and forecast for one or more locations anywhere in the world.
-    Use this tool whenever the user asks about weather - for their trips or for any other locations.
+
+    Use this tool when the user asks about weather for ANY location they mention.
+    DO NOT ask the user for the location if they already told you - just use this tool with their location.
+
+    Examples:
+    - User: "What's the weather in Tokyo?" → Call search_weather("Tokyo")
+    - User: "Weather for Paris and London?" → Call search_weather("Paris, London")
+    - User: "Is it raining in New York?" → Call search_weather("New York")
 
     Args:
-        locations: Comma-separated list of location names (e.g., "Paris, France" or "Tokyo, London, New York")
+        locations: Comma-separated list of location names. Accept ANY format the user provides.
     """
     print(
         f"========================= USING TOOL: Searching weather for {locations} =========================\n"
@@ -139,6 +163,10 @@ tools = [
     search_places,
     search_trip_planning,
     search_weather,
+    create_trip,
+    add_destination_to_trip,
+    get_trip_details,
+    get_travel_recommendations,
 ]
 tool_node = ToolNode(tools)
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.8).bind_tools(tools)
@@ -146,23 +174,122 @@ llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.8).bind_tools(tools)
 
 def should_use_tools(state: AgentState) -> str:
     last_message = state["messages"][-1]
+    print(f"\nDECISION NODE - Should use tools?")
+    print(
+        f"Last message has tool_calls: {hasattr(last_message, 'tool_calls') and bool(last_message.tool_calls)}"
+    )
+
     if hasattr(last_message, "tool_calls") and last_message.tool_calls:
+        print(f"ROUTING TO TOOLS - {len(last_message.tool_calls)} tool(s) to execute")
         return "tools"
-    return "end"
+    else:
+        print(f"ENDING CONVERSATION - No tools needed")
+        return "end"
 
 
 def chat(state: AgentState) -> AgentState:
     # Build dynamic system prompt with user's trip data
+    print(f"\n{'='*80}")
+    print(f"🤖 CHAT NODE - Processing user input")
+    print(f"User ID: {state.get('user_id', 'Unknown')}")
+    print(f"Messages count: {len(state.get('messages', []))}")
+    print(f"User trips available: {bool(state.get('user_trips'))}")
+    print(f"{'='*80}")
+
     base_prompt = """You are Max, a helpful travel assistant with personality. You can:
-    1. Check weather for ANY location in the world (use search_weather tool)
-    2. Search for places, restaurants, and attractions (use search_places tool)
-    3. Search for trip planning information (use search_trip_planning tool)
+    1. **Create trips** for users (use create_trip tool)
+    2. **Check weather** for ANY location (use search_weather tool)
+    3. **Search for places**, restaurants, and attractions (use search_places tool)
+    4. **Search for trip planning** information (use search_trip_planning tool)
+    5. **Add destinations** to existing trips (use add_destination_to_trip tool)
+    6. **Get trip details** and information (use get_trip_details tool)
+    7. **Get personalized recommendations** (use get_travel_recommendations tool)
     
-    When users ask about weather for their trips, you can see their trip locations in the context below.
-    Use the search_weather tool to get current weather for those locations.
+    ## How to Use Tools:
     
-    You have access to real-time data through your tools. Use them to provide accurate, up-to-date information.
-    Be helpful, concise, and a bit whimsical in your responses."""
+    IMPORTANT: Tools are AUTOMATIC - you call them based on what the user says. Don't ask for permission to use tools, just use them!
+    
+    ## Creating Trips - EXAMPLES:
+    
+    When a user wants to create a trip, have a natural conversation to gather missing information ONLY:
+    - Destination (where they want to go) - if not mentioned, ask
+    - Dates (accept ANY date format - "next week", "July 1-10", "2024-07-01", etc.) - if not mentioned, ask
+    - Trip type/purpose (optional - if they don't mention it, skip it)
+
+    Example 1:
+    User: "I want to create a trip to Paris from July 1-10"
+    You: "Perfect! Let me research Paris for your July 1-10 trip..." [call search_places and search_weather, then create_trip]
+    
+    Example 2:
+    User: "I'd like to go to New York and Boston from October 17th 2025 to October 28th 2025"
+    You: "Great! Let me research New York and Boston for your October 17-28 trip..." [call search_places and search_weather, then create_trip]
+    
+    Example 3:
+    User: "I would like to go to Rome and Milan. October 18 to October 28 2025"
+    You: "Fantastic! Let me research Rome and Milan for your October 18-28 trip..." [call search_places and search_weather, then create_trip]
+    
+    Example 4:
+    User: "Create a trip"
+    You: "I'd love to help! Where would you like to go?" [wait for destination]
+    
+    ## Adding Destinations to Existing Trips:
+    
+    Example 5:
+    User: "Add Paris to my New York trip"
+    You: "I'll add Paris to your New York trip!" [call add_destination_to_trip]
+    
+    Example 6:
+    User: "I want to visit Tokyo on my Japan trip"
+    You: "Great! I'll add Tokyo to your Japan trip!" [call add_destination_to_trip]
+    
+    ## Getting Trip Information:
+    
+    Example 7:
+    User: "Show me my trips"
+    You: "Let me get your trip details..." [call get_trip_details]
+    
+    Example 8:
+    User: "What's in my Paris trip?"
+    You: "Let me check your Paris trip details..." [call get_trip_details with trip_title="Paris"]
+    
+    ## Getting Recommendations:
+    
+    Example 9:
+    User: "Give me recommendations for Tokyo"
+    You: "I'll get personalized recommendations for Tokyo..." [call get_travel_recommendations]
+    
+    Example 10:
+    User: "What should I do in Paris for a cultural trip?"
+    You: "Let me get cultural recommendations for Paris..." [call get_travel_recommendations with trip_type="cultural"]
+
+    You can also add destinations yourself when using create_trip tool. Just scan the user input for distinct locations and add them to the trip.
+    
+    CRITICAL RULES:
+    - NEVER repeat questions - if they already told you something, YOU ALREADY KNOW IT
+    - If user says "New York and Boston from October 17th to October 28th" → YOU HAVE EVERYTHING YOU NEED
+    - If user says "Paris next week" → YOU HAVE EVERYTHING YOU NEED (convert dates yourself)
+    - Accept flexible date formats - convert them yourself to YYYY-MM-DD
+    - Once you have destination + dates, use search_places and search_weather to research
+    - Generate a detailed 2-3 paragraph summary with itinerary, weather tips, and local recommendations
+    - **THEN IMMEDIATELY call create_trip tool with all the information**
+    - **DO NOT just give recommendations - CREATE THE TRIP!**
+    
+    ## For Weather & Places:
+    
+    When users ask about weather or places:
+    - If they specify a location → USE THE TOOL IMMEDIATELY with that location
+    - If they don't specify → Ask once which location
+    - Accept ANY location format - "Tokyo", "Paris, France", "New York City", etc.
+    - After using the tool, present the results in a helpful, conversational way
+    
+    ## General Rules:
+    
+    - Be conversational and natural
+    - Don't repeat yourself or ask redundant questions
+    - Use tools automatically when you have the information needed
+    - Accept flexible user input - dates, locations, etc. in any reasonable format
+    - You have access to real-time data through your tools. Use them!
+    - Handle ALL types of travel queries - creation, modification, information, recommendations"""
 
     # Add user's trip data to context if available
     if state.get("user_trips"):
@@ -173,9 +300,26 @@ def chat(state: AgentState) -> AgentState:
 
     system_prompt = SystemMessage(content=system_content)
     messages = [system_prompt, *state["messages"]]
-    print(f"Messages: {messages}")
+
+    print(f"\n📝 SYSTEM PROMPT LENGTH: {len(system_content)} characters")
+    print(f"📝 TOTAL MESSAGES: {len(messages)}")
+    print(
+        f"📝 LAST USER MESSAGE: {state['messages'][-1].content if state['messages'] else 'None'}"
+    )
+
+    print(f"\n🔄 CALLING LLM...")
     response = llm.invoke(messages)
-    print(f"Response: {response}")
+
+    print(f"\n✅ LLM RESPONSE RECEIVED:")
+    print(f"Content: {response.content[:200]}...")
+    print(
+        f"Tool calls: {len(response.tool_calls) if hasattr(response, 'tool_calls') and response.tool_calls else 0}"
+    )
+
+    if hasattr(response, "tool_calls") and response.tool_calls:
+        for i, tool_call in enumerate(response.tool_calls):
+            print(f"  Tool {i+1}: {tool_call['name']} with args: {tool_call['args']}")
+
     return {"messages": [response]}
 
 
@@ -195,7 +339,12 @@ async def generate_ai_response_stream_async(
     user_id: str,
     user_trips: Optional[str] = None,
 ):
-    print(f"Starting AI response generation for: {user_input}")
+    print(f"\n{'='*80}")
+    print(f"🚀 STARTING AI RESPONSE GENERATION")
+    print(f"User input: '{user_input}'")
+    print(f"User ID: {user_id}")
+    print(f"User trips context: {bool(user_trips)}")
+    print(f"{'='*80}")
 
     try:
         # Use astream_events for token-by-token streaming
@@ -208,18 +357,33 @@ async def generate_ai_response_stream_async(
             version="v2",
         ):
             kind = event["event"]
+            print(f"\nEVENT: {kind}")
 
             # Stream tokens from the LLM
             if kind == "on_chat_model_stream":
                 content = event["data"]["chunk"].content
                 if content:
-                    print(f"Yielding token: {content}")
+                    print(f"YIELDING TOKEN: '{content}'")
                     yield content
 
             # Handle tool calls if needed
             elif kind == "on_tool_start":
-                print(f"Tool started: {event['name']}")
+                tool_name = event.get("name", "Unknown")
+                print(f"TOOL STARTED: {tool_name}")
+
+            elif kind == "on_tool_end":
+                tool_name = event.get("name", "Unknown")
+                print(f"TOOL COMPLETED: {tool_name}")
+
+            elif kind == "on_chat_model_start":
+                print(f"CHAT MODEL STARTED")
+
+            elif kind == "on_chat_model_end":
+                print(f"CHAT MODEL ENDED")
 
     except Exception as e:
-        print(f"Error in AI processing: {e}")
+        print(f"\n❌ ERROR IN AI PROCESSING: {e}")
+        import traceback
+
+        traceback.print_exc()
         yield f"Error in AI processing: {str(e)}"
