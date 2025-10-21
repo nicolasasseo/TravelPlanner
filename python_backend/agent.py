@@ -137,30 +137,27 @@ async def generate_ai_response_stream_async(
     print(f"Starting AI response generation for: {user_input}")
 
     try:
-        async for chunk in app.astream(
+        # Use astream_events for token-by-token streaming
+        async for event in app.astream_events(
             {
                 "messages": [HumanMessage(content=user_input)],
                 "user_id": user_id,
                 "trip_id": trip_id,
-            }
+            },
+            version="v2",
         ):
-            print(f"Received chunk: {chunk}")
+            kind = event["event"]
 
-            # Handle chat node output
-            if "chat" in chunk:
-                messages_update = chunk["chat"]
-                # The chat node returns {"messages": [response]}
-                if "messages" in messages_update:
-                    for message in messages_update["messages"]:
-                        if hasattr(message, "content") and message.content:
-                            print(f"Yielding content: {message.content}")
-                            yield message.content
+            # Stream tokens from the LLM
+            if kind == "on_chat_model_stream":
+                content = event["data"]["chunk"].content
+                if content:
+                    print(f"Yielding token: {content}")
+                    yield content
 
-            # Handle tools node output
-            elif "tools" in chunk:
-                print("Using tools...")
-                # Optionally yield a status message
-                # yield "🔍 Searching for information..."
+            # Handle tool calls if needed
+            elif kind == "on_tool_start":
+                print(f"Tool started: {event['name']}")
 
     except Exception as e:
         print(f"Error in AI processing: {e}")

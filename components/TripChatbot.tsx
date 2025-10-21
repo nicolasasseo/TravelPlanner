@@ -5,7 +5,7 @@ import { TextStreamChatTransport } from "ai"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-// import { Input } from "@/components/ui/input"
+import ReactMarkdown from "react-markdown"
 
 interface TripChatbotProps {
   tripId: string
@@ -83,13 +83,23 @@ export default function TripChatbot({ tripId, userId }: TripChatbotProps) {
               <p className="text-xs font-semibold mb-1 opacity-70">
                 {m.role === "user" ? "You" : "Max"}
               </p>
-              <div className="text-sm">
-                {m.parts.map((part, index) =>
-                  part.type === "text" ? (
-                    <span key={index}>{part.text}</span>
-                  ) : null
-                )}
-              </div>
+              {m.role === "user" ? (
+                <div className="text-sm">
+                  {m.parts.map((part, index) =>
+                    part.type === "text" ? (
+                      <span key={index}>{part.text}</span>
+                    ) : null
+                  )}
+                </div>
+              ) : (
+                <div className="text-sm prose prose-sm max-w-none prose-headings:mt-2 prose-headings:mb-1 prose-p:my-1 prose-li:my-0">
+                  {m.parts.map((part, index) =>
+                    part.type === "text" ? (
+                      <ReactMarkdown key={index}>{part.text}</ReactMarkdown>
+                    ) : null
+                  )}
+                </div>
+              )}
             </div>
           </div>
         ))}

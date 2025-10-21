@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "uploadthing/tw/v4";
+@plugin "@tailwindcss/typography";
 @source "../node_modules/@uploadthing/react/dist"; /** <-- depends on your project structure */
 
 @theme inline {
