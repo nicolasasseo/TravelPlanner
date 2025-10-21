@@ -8,18 +8,17 @@ import { Card } from "@/components/ui/card"
 import ReactMarkdown from "react-markdown"
 
 interface TripChatbotProps {
-  tripId: string
   userId: string
 }
 
-export default function TripChatbot({ tripId, userId }: TripChatbotProps) {
+export default function TripChatbot({ userId }: TripChatbotProps) {
   const [input, setInput] = useState("")
 
   const { messages, sendMessage, status, setMessages } = useChat({
     transport: new TextStreamChatTransport({
       api: "/api/ai/chat",
       body: {
-        tripId: tripId,
+        userId: userId,
       },
     }),
   })
@@ -34,7 +33,7 @@ export default function TripChatbot({ tripId, userId }: TripChatbotProps) {
           parts: [
             {
               type: "text",
-              text: "Hi! I'm Max. Ask me anything about your trip.",
+              text: "Hi! I'm Max, your travel assistant. I can help you with your trips, check weather, find places to visit, and plan your adventures. Ask me anything!",
             },
           ],
         },

@@ -61,9 +61,7 @@ app.add_middleware(
 
 class ChatTripRequest(BaseModel):
     user_input: str
-    # maybe have an id field that links to the user id and trip id?
     user_id: str
-    trip_id: Optional[str] = None
 
 
 class ChatTripResponse(BaseModel):
@@ -74,12 +72,41 @@ class ChatTripResponse(BaseModel):
 async def chat_trip(request: ChatTripRequest):
     print(f"Received request: {request}")
 
+    # Fetch user's trips to pass in context
+    import requests
+
+    user_trips_data = None
+    try:
+        response = requests.get(
+            f"http://localhost:3000/api/ai/trips",
+            params={"userId": request.user_id},
+            timeout=5,
+        )
+        if response.status_code == 200:
+            data = response.json()
+            trips = data.get("trips", [])
+
+            if trips:
+                # Format trips for context
+                trips_text = f"You have {len(trips)} trip(s):\n\n"
+                for i, trip in enumerate(trips, 1):
+                    trips_text += f"{i}. {trip['title']}\n"
+                    trips_text += f"   Description: {trip['description']}\n"
+                    trips_text += f"   Dates: {trip['startDate'][:10]} to {trip['endDate'][:10]}\n"
+                    if trip.get("locations"):
+                        location_names = [loc["name"] for loc in trip["locations"]]
+                        trips_text += f"   Locations: {', '.join(location_names)}\n"
+                    trips_text += "\n"
+                user_trips_data = trips_text
+    except Exception as e:
+        print(f"Error fetching trips: {e}")
+
     async def generate_stream():
         try:
             async for token in generate_ai_response_stream_async(
                 user_input=request.user_input,
                 user_id=request.user_id,
-                trip_id=request.trip_id,
+                user_trips=user_trips_data,
             ):
                 if token:  # Ensure we don't send empty data
                     yield f"data: {json.dumps({'ai_response': token})}\n\n"

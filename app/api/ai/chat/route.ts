@@ -11,8 +11,11 @@ export async function POST(req: Request) {
 
   console.log("Sending message to FastAPI backend...")
 
-  const { messages, tripId } = await req.json()
+  const { messages, userId } = await req.json()
   const lastMessage = messages[messages.length - 1]
+
+  // Use userId from body if provided, otherwise use session
+  const effectiveUserId = userId || session.user.id
 
   try {
     const fastapiResponse = await fetch("http://127.0.0.1:8000/chat-trip", {
@@ -20,8 +23,7 @@ export async function POST(req: Request) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         user_input: lastMessage.parts[0].text, // Extract text from parts
-        user_id: session.user.id,
-        trip_id: tripId,
+        user_id: effectiveUserId,
       }),
     })
 

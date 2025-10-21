@@ -56,19 +56,11 @@ const page = async () => {
           </p>
         </CardContent>
       </Card>
-      {/* Show the TripChatbot if there is at least one trip */}
-      {sortedTrips.length > 0 && (
-        <div>
-          <h2 className="text-xl font-semibold mt-4 mb-2">
-            Need help planning?
-          </h2>
-          {/* We give the first trip as an example, adjust as needed */}
-          <TripChatbot
-            tripId={sortedTrips[0].id}
-            userId={session.user?.id as string}
-          />
-        </div>
-      )}
+      {/* Show the TripChatbot - it can now access all trips */}
+      <div>
+        <h2 className="text-xl font-semibold mt-4 mb-2">Need help planning?</h2>
+        <TripChatbot userId={session.user?.id as string} />
+      </div>
 
       <div className="">
         <h2 className="text-lg font-semibold mb-4">Your Recent Trips</h2>

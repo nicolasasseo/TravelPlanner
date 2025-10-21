@@ -18,6 +18,7 @@ from serpapi import GoogleSearch
 import json
 from pprint import pprint
 from ToolLogger import tool_logger
+from trip_tools import get_trip_weather
 
 load_dotenv()
 
@@ -25,7 +26,7 @@ load_dotenv()
 class AgentState(TypedDict):
     messages: Annotated[Sequence[BaseMessage], add_messages]
     user_id: str
-    trip_id: Optional[str]
+    user_trips: Optional[str]  # Trip data passed in context
 
 
 @tool
@@ -90,19 +91,13 @@ def search_trip_planning(destination: str, start_date: str, end_date: str) -> st
     return trip_planning_info
 
 
-tools = [search_places, search_trip_planning]
+tools = [
+    search_places,
+    search_trip_planning,
+    get_trip_weather,
+]
 tool_node = ToolNode(tools)
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.6).bind_tools(tools)
-system_prompt = SystemMessage(
-    content="""You are Max, a helpful travel assistant with personality. You can:
-    1. Search for places, restaurants, attractions
-    2. Get weather information
-    3. Help plan trips with detailed itineraries
-    
-    You have access to real-time data through your tools. Use them to provide accurate, up-to-date information.
-    Be helpful, concise, and a bit whimsical in your responses. 
-    If you do not know, explain calmly."""
-)
 
 
 def should_use_tools(state: AgentState) -> str:
@@ -113,6 +108,23 @@ def should_use_tools(state: AgentState) -> str:
 
 
 def chat(state: AgentState) -> AgentState:
+    # Build dynamic system prompt with user's trip data
+    base_prompt = """You are Max, a helpful travel assistant with personality. You can:
+    1. Check weather for trip locations (use get_trip_weather tool)
+    2. Search for places, restaurants, and attractions (use search_places tool)
+    3. Search for trip planning information (use search_trip_planning tool)
+    
+    You have access to real-time data through your tools. Use them to provide accurate, up-to-date information.
+    Be helpful, concise, and a bit whimsical in your responses."""
+
+    # Add user's trip data to context if available
+    if state.get("user_trips"):
+        trips_context = f"\n\nUSER'S TRIPS:\n{state['user_trips']}\n\nUse this information to answer questions about the user's trips. You don't need to call any tools to access this data - it's already here."
+        system_content = base_prompt + trips_context
+    else:
+        system_content = base_prompt + "\n\nThe user doesn't have any trips yet."
+
+    system_prompt = SystemMessage(content=system_content)
     messages = [system_prompt, *state["messages"]]
     print(f"Messages: {messages}")
     response = llm.invoke(messages)
@@ -132,7 +144,9 @@ app = graph.compile()
 
 
 async def generate_ai_response_stream_async(
-    user_input: str, user_id: str, trip_id: Optional[str] = None
+    user_input: str,
+    user_id: str,
+    user_trips: Optional[str] = None,
 ):
     print(f"Starting AI response generation for: {user_input}")
 
@@ -142,7 +156,7 @@ async def generate_ai_response_stream_async(
             {
                 "messages": [HumanMessage(content=user_input)],
                 "user_id": user_id,
-                "trip_id": trip_id,
+                "user_trips": user_trips,  # Pass trip data in context
             },
             version="v2",
         ):
