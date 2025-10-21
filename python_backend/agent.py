@@ -18,7 +18,7 @@ from serpapi import GoogleSearch
 import json
 from pprint import pprint
 from ToolLogger import tool_logger
-from trip_tools import get_trip_weather
+from search_weather import search_weather as search_weather_function
 
 load_dotenv()
 
@@ -91,13 +91,57 @@ def search_trip_planning(destination: str, start_date: str, end_date: str) -> st
     return trip_planning_info
 
 
+@tool
+def search_weather(locations: str) -> str:
+    """Get current weather and forecast for one or more locations anywhere in the world.
+    Use this tool whenever the user asks about weather - for their trips or for any other locations.
+
+    Args:
+        locations: Comma-separated list of location names (e.g., "Paris, France" or "Tokyo, London, New York")
+    """
+    print(
+        f"========================= USING TOOL: Searching weather for {locations} =========================\n"
+    )
+
+    # Parse the comma-separated locations
+    location_list = [loc.strip() for loc in locations.split(",")]
+
+    # Call the search_weather function
+    weather_data = search_weather_function(location_list)
+
+    if "error" in weather_data:
+        return f"Could not fetch weather data: {weather_data['error']}"
+
+    # Format the response
+    result = ""
+    for i, loc_weather in enumerate(weather_data.get("locations", [])):
+        location_name = location_list[i] if i < len(location_list) else "Unknown"
+        current = loc_weather.get("current", {})
+
+        result += f"\n📍 **{location_name}**\n"
+        result += f"Current: {current.get('condition', 'N/A')}, {current.get('temperature_f', 'N/A')}°F ({current.get('temperature_c', 'N/A')}°C)\n"
+        result += f"Humidity: {current.get('humidity', 'N/A')}, Wind: {current.get('wind', 'N/A')}\n"
+
+        forecast = loc_weather.get("forecast", [])
+        if forecast:
+            result += "Forecast:\n"
+            for day in forecast[:3]:  # Show 3-day forecast
+                result += (
+                    f"  - {day.get('day', 'N/A')}: {day.get('condition', 'N/A')}, "
+                )
+                result += f"High: {day.get('high_f', 'N/A')}°F, Low: {day.get('low_f', 'N/A')}°F\n"
+        result += "\n"
+
+    return result if result else "Could not fetch weather data."
+
+
 tools = [
     search_places,
     search_trip_planning,
-    get_trip_weather,
+    search_weather,
 ]
 tool_node = ToolNode(tools)
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.6).bind_tools(tools)
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.8).bind_tools(tools)
 
 
 def should_use_tools(state: AgentState) -> str:
@@ -110,9 +154,12 @@ def should_use_tools(state: AgentState) -> str:
 def chat(state: AgentState) -> AgentState:
     # Build dynamic system prompt with user's trip data
     base_prompt = """You are Max, a helpful travel assistant with personality. You can:
-    1. Check weather for trip locations (use get_trip_weather tool)
+    1. Check weather for ANY location in the world (use search_weather tool)
     2. Search for places, restaurants, and attractions (use search_places tool)
     3. Search for trip planning information (use search_trip_planning tool)
+    
+    When users ask about weather for their trips, you can see their trip locations in the context below.
+    Use the search_weather tool to get current weather for those locations.
     
     You have access to real-time data through your tools. Use them to provide accurate, up-to-date information.
     Be helpful, concise, and a bit whimsical in your responses."""

@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react"
 import { TextStreamChatTransport } from "ai"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import ReactMarkdown from "react-markdown"
@@ -13,6 +13,7 @@ interface TripChatbotProps {
 
 export default function TripChatbot({ userId }: TripChatbotProps) {
   const [input, setInput] = useState("")
+  const messagesEndRef = useRef<HTMLDivElement>(null)
 
   const { messages, sendMessage, status, setMessages } = useChat({
     transport: new TextStreamChatTransport({
@@ -22,6 +23,10 @@ export default function TripChatbot({ userId }: TripChatbotProps) {
       },
     }),
   })
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
 
   // Add initial message when component mounts
   useEffect(() => {
@@ -55,6 +60,8 @@ export default function TripChatbot({ userId }: TripChatbotProps) {
     if (input.trim() && status === "ready") {
       sendMessage({ text: input })
       setInput("")
+      // Scroll to bottom when user sends a message
+      setTimeout(scrollToBottom, 100)
     }
   }
 
@@ -113,6 +120,7 @@ export default function TripChatbot({ userId }: TripChatbotProps) {
             </div>
           </div>
         )}
+        <div ref={messagesEndRef} />
       </div>
 
       <form onSubmit={handleSubmit} className="flex gap-2">
