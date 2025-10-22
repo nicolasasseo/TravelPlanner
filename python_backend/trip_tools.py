@@ -6,6 +6,13 @@ from search_weather import search_weather
 from dotenv import load_dotenv
 from serpapi import GoogleSearch
 import json
+from datetime import datetime
+from trip_utils import (
+    parse_date_flexible,
+    extract_locations_from_text,
+    create_locations_json,
+    parse_trip_request,
+)
 
 load_dotenv()
 
@@ -157,10 +164,20 @@ def create_trip(
         if locations:
             try:
                 locations_list = json.loads(locations)
-                print(f"ARSED LOCATIONS: {len(locations_list)} locations")
+                print(f"PARSED LOCATIONS: {len(locations_list)} locations")
             except json.JSONDecodeError as e:
                 print(f"JSON PARSE ERROR: {e}")
                 return "Error: locations must be valid JSON array"
+
+        # Validate dates
+        try:
+            from datetime import datetime
+
+            datetime.strptime(start_date, "%Y-%m-%d")
+            datetime.strptime(end_date, "%Y-%m-%d")
+        except ValueError as e:
+            print(f"DATE VALIDATION ERROR: {e}")
+            return f"Error: Invalid date format. Expected YYYY-MM-DD, got start_date='{start_date}', end_date='{end_date}'"
 
         print(f"CALLING NEXT.JS API: {NEXTJS_API_BASE}/api/ai/trips/create")
 
@@ -338,6 +355,120 @@ def get_trip_details(user_id: str, trip_title: Optional[str] = None) -> str:
     except Exception as e:
         print(f"Error in get_trip_details: {e}")
         return f"Error fetching trip details: {str(e)}"
+
+
+@tool
+def get_llm_context(user_id: str) -> str:
+    """Get the current context and state information for debugging purposes.
+
+    This tool provides insight into:
+    - User's trip information
+    - Current conversation state
+    - Available tools and their purposes
+    - System configuration
+
+    Args:
+        user_id: The ID of the user requesting context information
+    """
+    print(
+        f"========================= USING TOOL: Getting LLM context for user {user_id} =========================\n"
+    )
+
+    try:
+        context_info = {
+            "user_id": user_id,
+            "timestamp": datetime.now().isoformat(),
+            "available_tools": [
+                "get_trip_weather - Get weather for trip locations",
+                "create_trip - Create a new trip with destinations and dates",
+                "add_destination_to_trip - Add a destination to existing trip",
+                "get_trip_details - Get detailed trip information",
+                "get_travel_recommendations - Get personalized travel recommendations",
+                "get_llm_context - Get current context and debugging info",
+            ],
+            "system_info": {
+                "nextjs_api_base": NEXTJS_API_BASE,
+                "python_backend_version": "1.0.0",
+            },
+        }
+
+        # Get user's trip information
+        try:
+            response = requests.get(
+                f"{NEXTJS_API_BASE}/api/ai/trips",
+                params={"userId": user_id},
+                timeout=10,
+            )
+
+            if response.status_code == 200:
+                data = response.json()
+                trips = data.get("trips", [])
+                context_info["user_trips"] = {
+                    "total_trips": len(trips),
+                    "trip_summaries": [
+                        {
+                            "id": trip.get("id"),
+                            "title": trip.get("title"),
+                            "start_date": trip.get("startDate"),
+                            "end_date": trip.get("endDate"),
+                            "location_count": len(trip.get("locations", [])),
+                            "has_summary": bool(trip.get("summary")),
+                        }
+                        for trip in trips
+                    ],
+                }
+            else:
+                context_info["user_trips"] = {
+                    "error": f"Failed to fetch trips: {response.status_code}",
+                    "total_trips": 0,
+                }
+        except Exception as e:
+            context_info["user_trips"] = {
+                "error": f"Exception fetching trips: {str(e)}",
+                "total_trips": 0,
+            }
+
+        # Format the context information
+        result = "🔍 **LLM Context Information**\n\n"
+        result += f"**User ID:** {context_info['user_id']}\n"
+        result += f"**Timestamp:** {context_info['timestamp']}\n\n"
+
+        result += "**Available Tools:**\n"
+        for tool in context_info["available_tools"]:
+            result += f"  • {tool}\n"
+
+        result += f"\n**System Configuration:**\n"
+        result += (
+            f"  • Next.js API Base: {context_info['system_info']['nextjs_api_base']}\n"
+        )
+        result += f"  • Backend Version: {context_info['system_info']['python_backend_version']}\n"
+
+        result += f"\n**User Trip Information:**\n"
+        if "error" in context_info["user_trips"]:
+            result += f"  • Error: {context_info['user_trips']['error']}\n"
+        else:
+            result += f"  • Total Trips: {context_info['user_trips']['total_trips']}\n"
+            if context_info["user_trips"]["trip_summaries"]:
+                result += "  • Trip Details:\n"
+                for trip in context_info["user_trips"]["trip_summaries"]:
+                    result += f"    - {trip['title']} ({trip['start_date'][:10]} to {trip['end_date'][:10]})\n"
+                    result += f"      Locations: {trip['location_count']}, Has Summary: {trip['has_summary']}\n"
+
+        result += f"\n**Usage Instructions:**\n"
+        result += "  • Use 'get_trip_weather' to check weather for your trips\n"
+        result += (
+            "  • Use 'create_trip' to plan new trips with destinations and dates\n"
+        )
+        result += (
+            "  • Use 'get_travel_recommendations' for destination-specific advice\n"
+        )
+        result += "  • Use 'get_trip_details' to see all your trip information\n"
+
+        return result
+
+    except Exception as e:
+        print(f"Error in get_llm_context: {e}")
+        return f"Error getting context: {str(e)}"
 
 
 @tool

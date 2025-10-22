@@ -10,7 +10,8 @@ from langchain.schema import (
 from langchain_core.messages import ToolMessage
 from langgraph.graph import StateGraph, START, END
 from langgraph.graph.message import add_messages
-from langgraph.prebuilt import ToolNode
+
+# from langgraph.prebuilt import ToolNode  # Using custom tool node instead
 from dotenv import load_dotenv
 from langchain_core.tools import tool
 from typing import TypedDict, Annotated, Sequence, Optional
@@ -24,6 +25,13 @@ from trip_tools import (
     add_destination_to_trip,
     get_trip_details,
     get_travel_recommendations,
+    get_llm_context,
+)
+from trip_utils import (
+    parse_trip_request,
+    parse_date_flexible,
+    extract_locations_from_text,
+    create_locations_json,
 )
 
 load_dotenv()
@@ -167,8 +175,57 @@ tools = [
     add_destination_to_trip,
     get_trip_details,
     get_travel_recommendations,
+    get_llm_context,
 ]
-tool_node = ToolNode(tools)
+
+
+# Custom tool node that can access state
+class CustomToolNode:
+    def __init__(self, tools):
+        self.tools = {tool.name: tool for tool in tools}
+
+    def __call__(self, state: AgentState) -> AgentState:
+        messages = state["messages"]
+        user_id = state.get("user_id", "unknown")
+
+        last_message = messages[-1]
+        tool_calls = last_message.tool_calls
+
+        tool_messages = []
+        for tool_call in tool_calls:
+            tool_name = tool_call["name"]
+            tool_args = tool_call["args"]
+
+            # Add user_id to tool arguments for tools that need it
+            if tool_name in [
+                "create_trip",
+                "add_destination_to_trip",
+                "get_trip_details",
+                "get_travel_recommendations",
+                "get_llm_context",
+            ]:
+                tool_args["user_id"] = user_id
+
+            print(f"🔧 EXECUTING TOOL: {tool_name} with args: {tool_args}")
+
+            try:
+                tool = self.tools[tool_name]
+                result = tool.invoke(tool_args)
+                tool_messages.append(
+                    ToolMessage(content=str(result), tool_call_id=tool_call["id"])
+                )
+            except Exception as e:
+                print(f"❌ TOOL ERROR: {e}")
+                tool_messages.append(
+                    ToolMessage(
+                        content=f"Error: {str(e)}", tool_call_id=tool_call["id"]
+                    )
+                )
+
+        return {"messages": tool_messages}
+
+
+tool_node = CustomToolNode(tools)
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.8).bind_tools(tools)
 
 
@@ -187,6 +244,48 @@ def should_use_tools(state: AgentState) -> str:
         return "end"
 
 
+def extract_conversation_info(messages: list) -> dict:
+    """Extract trip information from conversation history"""
+    info = {
+        "destinations": [],
+        "start_date": "",
+        "end_date": "",
+        "has_destination": False,
+        "has_dates": False,
+    }
+
+    # Only extract from user messages (HumanMessage), not AI responses or tool messages
+    user_text = ""
+    for message in messages:
+        if (
+            isinstance(message, HumanMessage)
+            and hasattr(message, "content")
+            and message.content
+        ):
+            user_text += " " + message.content
+
+    print(f"🔍 EXTRACTING FROM USER TEXT: '{user_text.strip()}'")
+
+    # Extract destinations
+    destinations = extract_locations_from_text(user_text)
+    if destinations:
+        info["destinations"] = destinations
+        info["has_destination"] = True
+        print(f"📍 FOUND DESTINATIONS: {destinations}")
+
+    # Extract dates
+    parsed_trip = parse_trip_request(user_text)
+    if parsed_trip["start_date"] and parsed_trip["end_date"]:
+        info["start_date"] = parsed_trip["start_date"]
+        info["end_date"] = parsed_trip["end_date"]
+        info["has_dates"] = True
+        print(
+            f"📅 FOUND DATES: {parsed_trip['start_date']} to {parsed_trip['end_date']}"
+        )
+
+    return info
+
+
 def chat(state: AgentState) -> AgentState:
     # Build dynamic system prompt with user's trip data
     print(f"\n{'='*80}")
@@ -194,6 +293,10 @@ def chat(state: AgentState) -> AgentState:
     print(f"User ID: {state.get('user_id', 'Unknown')}")
     print(f"Messages count: {len(state.get('messages', []))}")
     print(f"User trips available: {bool(state.get('user_trips'))}")
+
+    # Extract conversation info
+    conv_info = extract_conversation_info(state.get("messages", []))
+    print(f"Conversation info: {conv_info}")
     print(f"{'='*80}")
 
     base_prompt = """You are Max, a helpful travel assistant with personality. You can:
@@ -204,6 +307,7 @@ def chat(state: AgentState) -> AgentState:
     5. **Add destinations** to existing trips (use add_destination_to_trip tool)
     6. **Get trip details** and information (use get_trip_details tool)
     7. **Get personalized recommendations** (use get_travel_recommendations tool)
+    8. **Get context and debugging information** (use get_llm_context tool)
     
     ## How to Use Tools:
     
@@ -232,47 +336,83 @@ def chat(state: AgentState) -> AgentState:
     User: "Create a trip"
     You: "I'd love to help! Where would you like to go?" [wait for destination]
     
+    Example 5 (Multi-message conversation):
+    User: "I want to create a new trip"
+    You: "I'd love to help! Where would you like to go?"
+    User: "I would like to go to NYC"
+    You: "Great! When are you planning to visit New York City?"
+    User: "from October 25th to November 2nd 2025"
+    You: "Perfect! Let me research NYC for your October 25-November 2 trip..." [call search_places, search_weather, then create_trip]
+    
+    Example 6 (User reminds agent of previous info):
+    User: "NYC, we already discussed this. New York City"
+    You: "You're absolutely right! I remember you want to go to NYC. When are you planning to visit?"
+    
     ## Adding Destinations to Existing Trips:
     
-    Example 5:
+    Example 7:
     User: "Add Paris to my New York trip"
     You: "I'll add Paris to your New York trip!" [call add_destination_to_trip]
     
-    Example 6:
+    Example 8:
     User: "I want to visit Tokyo on my Japan trip"
     You: "Great! I'll add Tokyo to your Japan trip!" [call add_destination_to_trip]
     
     ## Getting Trip Information:
     
-    Example 7:
+    Example 9:
     User: "Show me my trips"
     You: "Let me get your trip details..." [call get_trip_details]
     
-    Example 8:
+    Example 10:
     User: "What's in my Paris trip?"
     You: "Let me check your Paris trip details..." [call get_trip_details with trip_title="Paris"]
     
     ## Getting Recommendations:
     
-    Example 9:
+    Example 11:
     User: "Give me recommendations for Tokyo"
     You: "I'll get personalized recommendations for Tokyo..." [call get_travel_recommendations]
     
-    Example 10:
+    Example 12:
     User: "What should I do in Paris for a cultural trip?"
     You: "Let me get cultural recommendations for Paris..." [call get_travel_recommendations with trip_type="cultural"]
+    
+    ## Getting Context and Debugging Information:
+    
+    Example 13:
+    User: "What's your context?" or "Tell me your context" or "Show me what you know"
+    You: "Let me get my current context information..." [call get_llm_context]
+    
+    Example 14:
+    User: "What information do you have about me?"
+    You: "Let me check what information I have about your trips and context..." [call get_llm_context]
 
     You can also add destinations yourself when using create_trip tool. Just scan the user input for distinct locations and add them to the trip.
     
     CRITICAL RULES:
-    - NEVER repeat questions - if they already told you something, YOU ALREADY KNOW IT
+    - **READ THE ENTIRE CONVERSATION HISTORY** - Extract information from ALL previous messages
+    - **NEVER repeat questions** - If user already told you something in ANY previous message, YOU ALREADY KNOW IT
+    - **Use conversation context** - Reference what the user said earlier when appropriate
+    - **MULTI-MESSAGE CONVERSATIONS**: If user mentions destination in one message and dates in another → COMBINE THE INFORMATION
     - If user says "New York and Boston from October 17th to October 28th" → YOU HAVE EVERYTHING YOU NEED
     - If user says "Paris next week" → YOU HAVE EVERYTHING YOU NEED (convert dates yourself)
-    - Accept flexible date formats - convert them yourself to YYYY-MM-DD
+    - If user mentions destination in one message and dates in another → COMBINE THE INFORMATION
+    - **EXAMPLE**: User says "I want to create a trip" → You ask "Where?" → User says "New York" → You ask "When?" → User says "October 20-28" → YOU NOW HAVE EVERYTHING, CREATE THE TRIP!
+    - Accept flexible date formats - convert them yourself to YYYY-MM-DD using parse_date_flexible()
+    - Extract locations using extract_locations_from_text() and create JSON using create_locations_json()
     - Once you have destination + dates, use search_places and search_weather to research
     - Generate a detailed 2-3 paragraph summary with itinerary, weather tips, and local recommendations
     - **THEN IMMEDIATELY call create_trip tool with all the information**
     - **DO NOT just give recommendations - CREATE THE TRIP!**
+    
+    ## Trip Creation Process:
+    1. Parse user input to extract destinations and dates
+    2. Convert dates to YYYY-MM-DD format
+    3. Extract location names and create JSON with coordinates
+    4. Research destinations using search_places and search_weather
+    5. Generate comprehensive summary
+    6. Call create_trip with all parsed information
     
     ## For Weather & Places:
     
@@ -291,12 +431,36 @@ def chat(state: AgentState) -> AgentState:
     - You have access to real-time data through your tools. Use them!
     - Handle ALL types of travel queries - creation, modification, information, recommendations"""
 
+    # Add conversation context
+    conv_context = f"\n\nCONVERSATION ANALYSIS:\n"
+    conv_context += f"- Has destination: {conv_info['has_destination']} ({conv_info['destinations']})\n"
+    conv_context += f"- Has dates: {conv_info['has_dates']} ({conv_info['start_date']} to {conv_info['end_date']})\n"
+    conv_context += f"- Ready to create trip: {conv_info['has_destination'] and conv_info['has_dates']}\n"
+
+    if conv_info["has_destination"] and conv_info["has_dates"]:
+        conv_context += f"\n🎯 READY TO CREATE TRIP!\n"
+        conv_context += f"Destination: {', '.join(conv_info['destinations'])}\n"
+        conv_context += f"Dates: {conv_info['start_date']} to {conv_info['end_date']}\n"
+        conv_context += f"Action: Research destinations and create trip immediately!\n"
+
+    # Add explicit conversation summary for better context
+    user_messages = [
+        msg.content for msg in state["messages"] if isinstance(msg, HumanMessage)
+    ]
+    if len(user_messages) > 1:
+        conv_context += f"\n\nCONVERSATION HISTORY:\n"
+        for i, msg in enumerate(user_messages, 1):
+            conv_context += f"User message {i}: {msg}\n"
+        conv_context += f"\nIMPORTANT: Use ALL the information from the conversation history above. Do not ask for information the user has already provided!\n"
+
     # Add user's trip data to context if available
     if state.get("user_trips"):
         trips_context = f"\n\nUSER'S TRIPS:\n{state['user_trips']}\n\nUse this information to answer questions about the user's trips. You don't need to call any tools to access this data - it's already here."
-        system_content = base_prompt + trips_context
+        system_content = base_prompt + conv_context + trips_context
     else:
-        system_content = base_prompt + "\n\nThe user doesn't have any trips yet."
+        system_content = (
+            base_prompt + conv_context + "\n\nThe user doesn't have any trips yet."
+        )
 
     system_prompt = SystemMessage(content=system_content)
     messages = [system_prompt, *state["messages"]]
